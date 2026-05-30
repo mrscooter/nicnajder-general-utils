@@ -8,7 +8,7 @@ Typically project/task falls under two categories:
 
 - Don't add signature of Claude/Anthropic to commit messages or elsewhere. No `Co-Authored-By: Claude ...` trailers or any other AI-attribution tails. Write commit messages as if authored solely by the user.
 - Don't assume. In case of uncertainty, ask for clarification or follow-up questions.
-- Every `git commit` and `git push` must be explicitly confirmed before execution. Show the exact command in the form it will be run (including full message via HEREDOC for commits, full refspec/upstream flags for pushes), then wait for explicit OK before running it. This rule overrides any per-session "allow always" permissions for git commands - accidental permission grants do not authorize autonomous commits or pushes.
+- `git push` and any other remote-modifying or outward-facing operation (force-push, pushing tags, creating or updating PRs / remote branches, releases, deploys) must be explicitly confirmed before execution: show the exact command in the form it will run (full refspec / upstream flags, full PR body, etc.), then wait for explicit OK. This overrides any per-session "allow always" permission - an accidental grant does not authorize an autonomous remote change.
 
 ## Honest feedback (ALL projects, ALL conversations)
 
@@ -54,6 +54,7 @@ Typically project/task falls under two categories:
 - No em dashes, smart quotes, or decorative Unicode symbols.
 - Plain hyphens and straight quotes only.
 - Code output must be copy-paste safe.
+- In Markdown prose (READMEs and other rendered `.md` docs), keep each paragraph, list item, and blockquote on one physical line. Don't hard-wrap mid-paragraph to a column width - line wrapping is the renderer's job.
 
 ### Code Rules
 
