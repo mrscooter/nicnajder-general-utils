@@ -62,10 +62,14 @@ Typically project/task falls under two categories:
 - Extract helpers when they reduce reading load: a function doing several semantically distinct things, or a module/component that's grown unreadable. The threshold is "does the next reader benefit", not line count.
 - Don't extract for cosmetic reasons. One-line wrappers and single-use helpers with no semantic value are ceremony.
 - Split files when one's doing too much (600-line component, 1000-line view is a smell). Don't fragment for its own sake.
+- Actively propose splits/restructuring when a unit (function, class, file, folder) outgrows its job. Surface it, don't wait to be asked. Restructure per the language's best practices and with proper tooling.
 - No docstrings or type annotations on code not being changed.
+- Comments/docstrings must outlive the session: no ephemeral planning labels ("Layer N", "in this PR", "as discussed", "added later"). Point at real files/functions/tests, not plan scaffolding.
+- Comments must earn their place. Default to no comment; well-named code tells its own story.
+  - In-function comments: only for non-obvious WHY (hidden constraint, workaround, subtle invariant). No restating what the next line does.
+  - Docstrings on new functions/classes: yes but concise - what it does, not how/by whom. Skip when name + signature already convey intent. Must describe real behavior, no aspirational or placeholder docstrings.
+  - Decorative section dividers add no value - drop them. Plain ASCII only, never box-drawing or other decorative Unicode.
 - No error handling for scenarios that cannot happen.
-- Docstrings on new functions/classes: yes, but concise — describe what it does, not how it's used or by whom. Skip when the name + signature already convey the intent.
-- In-implementation comments (inside function bodies): don't comment what the code obviously does (intent visible from names and structure). Reserve for non-obvious WHY: hidden constraints, surprising behavior, workarounds.
 - If there is substantive problem with users solution, call it out.
 - If there is SUBSTANTIVE room for improvement of user solution, tell user.
 - Otherwise no "you may also want ...", no suggestions for improvement, no nitpicking.
