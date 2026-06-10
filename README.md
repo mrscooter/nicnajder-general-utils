@@ -25,3 +25,7 @@ Claude Code configuration and skills.
   across sessions: splits notes by role and mutability (brief, findings, status,
   progress log) so they survive context-window compaction and handoffs. Includes
   `SKILL.md` and file templates.
+- `skills/review-walkthrough/` - skill for triaging a code-review findings list one
+  at a time (summary, severity, type, proposed fix), gathering an accept/reject/
+  defer/won't-fix decision per finding, then implementing the agreed outcome. Pairs
+  with `/code-review`.
