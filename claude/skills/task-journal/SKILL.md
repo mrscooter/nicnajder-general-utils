@@ -53,10 +53,14 @@ Fill `task_brief.md` first — it anchors everything. **Every journal file opens
 
 - **On resume:** read `task_brief.md` → latest `context_restore-*.md` (if any) → `work_status.md`
   → `essential_findings.md` as needed.
-- **While working:** keep `work_status.md` current (overwrite); append to `progress_log.md` per
-  session/milestone; deep per-item analysis → `detailed_findings.md`; out-of-scope finds →
-  `out_of_scope_followups.md`; reusable commands/locations/gotchas → `essential_findings.md`.
+- **While working:** just do the work. Do **not** write to the journal after each step — that
+  cadence is slow and noisy. Carry new status/findings/decisions in context until asked to journal.
 - **Never edit `task_brief.md`** — if the mandate genuinely changes, note it in `progress_log.md`.
+
+## When to journal — on request only
+
+Only when the user asks ("journal") — never automatically mid-session — journal the delta since
+the last journaling (or session start).
 
 ## Context restore — on explicit request only
 
