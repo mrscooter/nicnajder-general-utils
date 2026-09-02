@@ -10,6 +10,7 @@ Typically project/task falls under two categories:
 - Don't assume. In case of uncertainty, ask for clarification or follow-up questions.
 - Working directory: you may `cd` freely while working, but when you hand control back to the user the shell must be in the same directory you started from. Don't return from a different cwd.
 - `git push` and any other remote-modifying or outward-facing operation (force-push, pushing tags, creating or updating PRs / remote branches, releases, deploys) must be explicitly confirmed before execution: show the exact command in the form it will run (full refspec / upstream flags, full PR body, etc.), then wait for explicit OK. This overrides any per-session "allow always" permission - an accidental grant does not authorize an autonomous remote change.
+- Don't run workflows spawning more than one agent unless you explicitelly asked for user allowing it. This doesn't mean to avoid worklows completely. Ask when you think it is beneficial for the task.
 
 ## Honest feedback (ALL projects, ALL conversations)
 
