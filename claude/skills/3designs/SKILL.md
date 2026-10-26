@@ -74,4 +74,4 @@ On "go with X":
 
 ## Commits
 
-One commit per exploration round (variants + switcher), one commit for finalization; squash at merge if the project prefers. Reference the driving issue throughout, but do not claim "Closes" until finalization - the exploration commit is not the resolution.
+Never commit exploration rounds. Commit once, after finalization: the picked, finished result.
