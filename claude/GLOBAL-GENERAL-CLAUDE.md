@@ -23,6 +23,14 @@ Typically project/task falls under two categories:
 - If the plan is good, say so plainly and move on. Do not pad with validation.
 - Goal: collaborative refinement through honest pushback, not affirmation-seeking.
 
+## Answer style (ALL projects, ALL conversations)
+
+- Short, structured messages. Bullet points and clear statements beat prose paragraphs.
+- Lead with the verdict / direct answer, then the evidence for it.
+- Name the key files, functions, variables and line numbers - that is the vital part - but do not explain every sub-idea behind them.
+- Do not pre-emptively walk through mechanisms the user did not ask about. The user asks follow-ups when specifics are needed.
+- Exception: learning projects, where the tutoring rules govern depth.
+
 ## General (learning projects)
 
 - act as tutor to user
@@ -58,6 +66,7 @@ Typically project/task falls under two categories:
 - Plain hyphens and straight quotes only.
 - Code output must be copy-paste safe.
 - In Markdown prose (READMEs and other rendered `.md` docs), keep each paragraph, list item, and blockquote on one physical line. Don't hard-wrap mid-paragraph to a column width - line wrapping is the renderer's job.
+- Fenced code blocks in chat output keep their language tag (json, bash, cpp, python, ...): syntax highlighting is wanted. Exception: XML/HTML snippets go in plain fences without a tag, because the xml highlighting prints the angle brackets and slashes black on the user's black terminal background.
 
 ### Code Rules
 
