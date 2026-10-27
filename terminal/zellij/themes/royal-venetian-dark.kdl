@@ -1,0 +1,129 @@
+// Venetian / Florentine, night: wine-black, ivory, crimson, Medici green, ochre.
+themes {
+    royal-venetian-dark {
+        text_unselected {
+            base 234 223 208
+            background 40 27 29
+            emphasis_0 210 86 106
+            emphasis_1 156 138 134
+            emphasis_2 94 156 120
+            emphasis_3 201 154 69
+        }
+        text_selected {
+            base 234 223 208
+            background 74 42 48
+            emphasis_0 210 86 106
+            emphasis_1 156 138 134
+            emphasis_2 94 156 120
+            emphasis_3 201 154 69
+        }
+        ribbon_selected {
+            base 30 20 22
+            background 210 86 106
+            emphasis_0 30 20 22
+            emphasis_1 30 20 22
+            emphasis_2 30 20 22
+            emphasis_3 30 20 22
+        }
+        ribbon_unselected {
+            base 234 223 208
+            background 53 35 38
+            emphasis_0 210 86 106
+            emphasis_1 156 138 134
+            emphasis_2 156 138 134
+            emphasis_3 201 154 69
+        }
+        table_title {
+            base 210 86 106
+            background 30 20 22
+            emphasis_0 210 86 106
+            emphasis_1 156 138 134
+            emphasis_2 94 156 120
+            emphasis_3 201 154 69
+        }
+        table_cell_selected {
+            base 234 223 208
+            background 74 42 48
+            emphasis_0 210 86 106
+            emphasis_1 156 138 134
+            emphasis_2 94 156 120
+            emphasis_3 201 154 69
+        }
+        table_cell_unselected {
+            base 234 223 208
+            background 40 27 29
+            emphasis_0 210 86 106
+            emphasis_1 156 138 134
+            emphasis_2 94 156 120
+            emphasis_3 201 154 69
+        }
+        list_selected {
+            base 234 223 208
+            background 74 42 48
+            emphasis_0 210 86 106
+            emphasis_1 156 138 134
+            emphasis_2 94 156 120
+            emphasis_3 201 154 69
+        }
+        list_unselected {
+            base 234 223 208
+            background 40 27 29
+            emphasis_0 210 86 106
+            emphasis_1 156 138 134
+            emphasis_2 94 156 120
+            emphasis_3 201 154 69
+        }
+        frame_unselected {
+            base 74 52 54
+            background 30 20 22
+            emphasis_0 156 138 134
+            emphasis_1 156 138 134
+            emphasis_2 156 138 134
+            emphasis_3 156 138 134
+        }
+        frame_selected {
+            base 210 86 106
+            background 30 20 22
+            emphasis_0 210 86 106
+            emphasis_1 156 138 134
+            emphasis_2 94 156 120
+            emphasis_3 30 20 22
+        }
+        frame_highlight {
+            base 201 154 69
+            background 30 20 22
+            emphasis_0 201 154 69
+            emphasis_1 201 154 69
+            emphasis_2 201 154 69
+            emphasis_3 201 154 69
+        }
+        exit_code_success {
+            base 94 156 120
+            background 30 20 22
+            emphasis_0 94 156 120
+            emphasis_1 40 27 29
+            emphasis_2 94 156 120
+            emphasis_3 156 138 134
+        }
+        exit_code_error {
+            base 224 110 128
+            background 30 20 22
+            emphasis_0 210 86 106
+            emphasis_1 30 20 22
+            emphasis_2 30 20 22
+            emphasis_3 30 20 22
+        }
+        multiplayer_user_colors {
+            player_1 210 86 106
+            player_2 94 156 120
+            player_3 201 154 69
+            player_4 94 156 120
+            player_5 180 104 140
+            player_6 90 158 166
+            player_7 156 138 134
+            player_8 221 176 90
+            player_9 138 166 210
+            player_10 201 128 159
+        }
+    }
+}

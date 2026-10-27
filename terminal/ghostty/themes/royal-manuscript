@@ -1,0 +1,23 @@
+# Illuminated manuscript: vellum, iron-gall ink, vermilion rubrics, lapis, gold leaf
+background = #F3EAD3
+foreground = #2B2118
+cursor-color = #A8321C
+cursor-text = #F3EAD3
+selection-background = #E2CF9C
+selection-foreground = #2B2118
+palette = 0=#2B2118
+palette = 1=#A8321C
+palette = 2=#3D6B35
+palette = 3=#8A6400
+palette = 4=#1F4A8C
+palette = 5=#7A2E5C
+palette = 6=#24696A
+palette = 7=#776A55
+palette = 8=#6E6250
+palette = 9=#C24726
+palette = 10=#4F8143
+palette = 11=#9C7510
+palette = 12=#3563A8
+palette = 13=#94406F
+palette = 14=#33807F
+palette = 15=#9C8E74

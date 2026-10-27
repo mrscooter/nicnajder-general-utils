@@ -1,0 +1,129 @@
+// Stone & pewter, night: slate ground, pewter text, muted gold, slate blue, brick.
+themes {
+    royal-stone-dark {
+        text_unselected {
+            base 211 212 210
+            background 33 35 39
+            emphasis_0 181 155 94
+            emphasis_1 138 143 149
+            emphasis_2 116 145 179
+            emphasis_3 190 116 104
+        }
+        text_selected {
+            base 211 212 210
+            background 52 56 62
+            emphasis_0 181 155 94
+            emphasis_1 138 143 149
+            emphasis_2 116 145 179
+            emphasis_3 190 116 104
+        }
+        ribbon_selected {
+            base 26 28 31
+            background 181 155 94
+            emphasis_0 26 28 31
+            emphasis_1 26 28 31
+            emphasis_2 26 28 31
+            emphasis_3 26 28 31
+        }
+        ribbon_unselected {
+            base 211 212 210
+            background 43 46 51
+            emphasis_0 181 155 94
+            emphasis_1 138 143 149
+            emphasis_2 138 143 149
+            emphasis_3 190 116 104
+        }
+        table_title {
+            base 181 155 94
+            background 26 28 31
+            emphasis_0 181 155 94
+            emphasis_1 138 143 149
+            emphasis_2 116 145 179
+            emphasis_3 190 116 104
+        }
+        table_cell_selected {
+            base 211 212 210
+            background 52 56 62
+            emphasis_0 181 155 94
+            emphasis_1 138 143 149
+            emphasis_2 116 145 179
+            emphasis_3 190 116 104
+        }
+        table_cell_unselected {
+            base 211 212 210
+            background 33 35 39
+            emphasis_0 181 155 94
+            emphasis_1 138 143 149
+            emphasis_2 116 145 179
+            emphasis_3 190 116 104
+        }
+        list_selected {
+            base 211 212 210
+            background 52 56 62
+            emphasis_0 181 155 94
+            emphasis_1 138 143 149
+            emphasis_2 116 145 179
+            emphasis_3 190 116 104
+        }
+        list_unselected {
+            base 211 212 210
+            background 33 35 39
+            emphasis_0 181 155 94
+            emphasis_1 138 143 149
+            emphasis_2 116 145 179
+            emphasis_3 190 116 104
+        }
+        frame_unselected {
+            base 60 64 70
+            background 26 28 31
+            emphasis_0 138 143 149
+            emphasis_1 138 143 149
+            emphasis_2 138 143 149
+            emphasis_3 138 143 149
+        }
+        frame_selected {
+            base 181 155 94
+            background 26 28 31
+            emphasis_0 181 155 94
+            emphasis_1 138 143 149
+            emphasis_2 116 145 179
+            emphasis_3 26 28 31
+        }
+        frame_highlight {
+            base 190 116 104
+            background 26 28 31
+            emphasis_0 190 116 104
+            emphasis_1 190 116 104
+            emphasis_2 190 116 104
+            emphasis_3 190 116 104
+        }
+        exit_code_success {
+            base 124 154 122
+            background 26 28 31
+            emphasis_0 124 154 122
+            emphasis_1 33 35 39
+            emphasis_2 116 145 179
+            emphasis_3 138 143 149
+        }
+        exit_code_error {
+            base 196 122 112
+            background 26 28 31
+            emphasis_0 181 155 94
+            emphasis_1 26 28 31
+            emphasis_2 26 28 31
+            emphasis_3 26 28 31
+        }
+        multiplayer_user_colors {
+            player_1 181 155 94
+            player_2 116 145 179
+            player_3 190 116 104
+            player_4 124 154 122
+            player_5 154 127 160
+            player_6 110 154 162
+            player_7 138 143 149
+            player_8 201 175 114
+            player_9 140 167 198
+            player_10 175 149 180
+        }
+    }
+}

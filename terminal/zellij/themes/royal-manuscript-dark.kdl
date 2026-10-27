@@ -1,0 +1,129 @@
+// Illuminated manuscript, night: oak-ink ground, vellum text, gold leaf, vermilion, lapis.
+themes {
+    royal-manuscript-dark {
+        text_unselected {
+            base 230 217 188
+            background 37 30 23
+            emphasis_0 209 165 62
+            emphasis_1 154 140 116
+            emphasis_2 106 143 203
+            emphasis_3 214 100 63
+        }
+        text_selected {
+            base 230 217 188
+            background 74 59 38
+            emphasis_0 209 165 62
+            emphasis_1 154 140 116
+            emphasis_2 106 143 203
+            emphasis_3 214 100 63
+        }
+        ribbon_selected {
+            base 28 23 18
+            background 209 165 62
+            emphasis_0 28 23 18
+            emphasis_1 28 23 18
+            emphasis_2 28 23 18
+            emphasis_3 28 23 18
+        }
+        ribbon_unselected {
+            base 230 217 188
+            background 48 39 29
+            emphasis_0 209 165 62
+            emphasis_1 154 140 116
+            emphasis_2 154 140 116
+            emphasis_3 214 100 63
+        }
+        table_title {
+            base 209 165 62
+            background 28 23 18
+            emphasis_0 209 165 62
+            emphasis_1 154 140 116
+            emphasis_2 106 143 203
+            emphasis_3 214 100 63
+        }
+        table_cell_selected {
+            base 230 217 188
+            background 74 59 38
+            emphasis_0 209 165 62
+            emphasis_1 154 140 116
+            emphasis_2 106 143 203
+            emphasis_3 214 100 63
+        }
+        table_cell_unselected {
+            base 230 217 188
+            background 37 30 23
+            emphasis_0 209 165 62
+            emphasis_1 154 140 116
+            emphasis_2 106 143 203
+            emphasis_3 214 100 63
+        }
+        list_selected {
+            base 230 217 188
+            background 74 59 38
+            emphasis_0 209 165 62
+            emphasis_1 154 140 116
+            emphasis_2 106 143 203
+            emphasis_3 214 100 63
+        }
+        list_unselected {
+            base 230 217 188
+            background 37 30 23
+            emphasis_0 209 165 62
+            emphasis_1 154 140 116
+            emphasis_2 106 143 203
+            emphasis_3 214 100 63
+        }
+        frame_unselected {
+            base 70 59 46
+            background 28 23 18
+            emphasis_0 154 140 116
+            emphasis_1 154 140 116
+            emphasis_2 154 140 116
+            emphasis_3 154 140 116
+        }
+        frame_selected {
+            base 209 165 62
+            background 28 23 18
+            emphasis_0 209 165 62
+            emphasis_1 154 140 116
+            emphasis_2 106 143 203
+            emphasis_3 28 23 18
+        }
+        frame_highlight {
+            base 214 100 63
+            background 28 23 18
+            emphasis_0 214 100 63
+            emphasis_1 214 100 63
+            emphasis_2 214 100 63
+            emphasis_3 214 100 63
+        }
+        exit_code_success {
+            base 127 160 96
+            background 28 23 18
+            emphasis_0 127 160 96
+            emphasis_1 37 30 23
+            emphasis_2 106 143 203
+            emphasis_3 154 140 116
+        }
+        exit_code_error {
+            base 214 100 63
+            background 28 23 18
+            emphasis_0 209 165 62
+            emphasis_1 28 23 18
+            emphasis_2 28 23 18
+            emphasis_3 28 23 18
+        }
+        multiplayer_user_colors {
+            player_1 209 165 62
+            player_2 106 143 203
+            player_3 214 100 63
+            player_4 127 160 96
+            player_5 176 112 143
+            player_6 95 163 156
+            player_7 154 140 116
+            player_8 227 186 85
+            player_9 134 166 219
+            player_10 198 136 165
+        }
+    }
+}

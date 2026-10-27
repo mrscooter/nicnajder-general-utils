@@ -1,0 +1,129 @@
+// Stone & pewter: limestone, slate blue, pewter, muted gold.
+themes {
+    royal-stone {
+        text_unselected {
+            base 38 42 48
+            background 218 216 209
+            emphasis_0 126 101 38
+            emphasis_1 108 113 120
+            emphasis_2 52 85 122
+            emphasis_3 138 59 50
+        }
+        text_selected {
+            base 38 42 48
+            background 205 200 186
+            emphasis_0 126 101 38
+            emphasis_1 108 113 120
+            emphasis_2 52 85 122
+            emphasis_3 138 59 50
+        }
+        ribbon_selected {
+            base 230 228 222
+            background 126 101 38
+            emphasis_0 230 228 222
+            emphasis_1 230 228 222
+            emphasis_2 230 228 222
+            emphasis_3 230 228 222
+        }
+        ribbon_unselected {
+            base 38 42 48
+            background 207 204 195
+            emphasis_0 126 101 38
+            emphasis_1 108 113 120
+            emphasis_2 108 113 120
+            emphasis_3 138 59 50
+        }
+        table_title {
+            base 126 101 38
+            background 230 228 222
+            emphasis_0 126 101 38
+            emphasis_1 108 113 120
+            emphasis_2 52 85 122
+            emphasis_3 138 59 50
+        }
+        table_cell_selected {
+            base 38 42 48
+            background 205 200 186
+            emphasis_0 126 101 38
+            emphasis_1 108 113 120
+            emphasis_2 52 85 122
+            emphasis_3 138 59 50
+        }
+        table_cell_unselected {
+            base 38 42 48
+            background 218 216 209
+            emphasis_0 126 101 38
+            emphasis_1 108 113 120
+            emphasis_2 52 85 122
+            emphasis_3 138 59 50
+        }
+        list_selected {
+            base 38 42 48
+            background 205 200 186
+            emphasis_0 126 101 38
+            emphasis_1 108 113 120
+            emphasis_2 52 85 122
+            emphasis_3 138 59 50
+        }
+        list_unselected {
+            base 38 42 48
+            background 218 216 209
+            emphasis_0 126 101 38
+            emphasis_1 108 113 120
+            emphasis_2 52 85 122
+            emphasis_3 138 59 50
+        }
+        frame_unselected {
+            base 189 186 177
+            background 230 228 222
+            emphasis_0 108 113 120
+            emphasis_1 108 113 120
+            emphasis_2 108 113 120
+            emphasis_3 108 113 120
+        }
+        frame_selected {
+            base 126 101 38
+            background 230 228 222
+            emphasis_0 126 101 38
+            emphasis_1 108 113 120
+            emphasis_2 52 85 122
+            emphasis_3 230 228 222
+        }
+        frame_highlight {
+            base 138 59 50
+            background 230 228 222
+            emphasis_0 138 59 50
+            emphasis_1 138 59 50
+            emphasis_2 138 59 50
+            emphasis_3 138 59 50
+        }
+        exit_code_success {
+            base 69 100 70
+            background 230 228 222
+            emphasis_0 69 100 70
+            emphasis_1 218 216 209
+            emphasis_2 52 85 122
+            emphasis_3 108 113 120
+        }
+        exit_code_error {
+            base 138 59 50
+            background 230 228 222
+            emphasis_0 126 101 38
+            emphasis_1 230 228 222
+            emphasis_2 230 228 222
+            emphasis_3 230 228 222
+        }
+        multiplayer_user_colors {
+            player_1 126 101 38
+            player_2 52 85 122
+            player_3 138 59 50
+            player_4 69 100 70
+            player_5 105 74 107
+            player_6 58 99 108
+            player_7 108 113 120
+            player_8 142 116 50
+            player_9 69 106 147
+            player_10 126 92 128
+        }
+    }
+}

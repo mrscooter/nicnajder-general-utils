@@ -1,0 +1,23 @@
+# Stone & pewter, night: slate ground, pewter text, muted gold, slate blue, brick
+background = #1A1C1F
+foreground = #D3D4D2
+cursor-color = #B59B5E
+cursor-text = #1A1C1F
+selection-background = #34383E
+selection-foreground = #D3D4D2
+palette = 0=#26292D
+palette = 1=#BE7468
+palette = 2=#7C9A7A
+palette = 3=#B59B5E
+palette = 4=#7491B3
+palette = 5=#9A7FA0
+palette = 6=#6E9AA2
+palette = 7=#B8BBBD
+palette = 8=#6C7177
+palette = 9=#C47A70
+palette = 10=#92AE90
+palette = 11=#C9AF72
+palette = 12=#8CA7C6
+palette = 13=#AF95B4
+palette = 14=#86AEB5
+palette = 15=#E2E3E1

@@ -1,0 +1,23 @@
+# Scholar's library: linen, leather, bottle green, brass, oxblood
+background = #EBE4D4
+foreground = #33291F
+cursor-color = #7D6420
+cursor-text = #EBE4D4
+selection-background = #D8CBAA
+selection-foreground = #33291F
+palette = 0=#33291F
+palette = 1=#7E3328
+palette = 2=#3E5E45
+palette = 3=#76601F
+palette = 4=#3D5372
+palette = 5=#6B4559
+palette = 6=#3F6663
+palette = 7=#756A5A
+palette = 8=#6F6555
+palette = 9=#94473A
+palette = 10=#517259
+palette = 11=#8C7430
+palette = 12=#506787
+palette = 13=#7F5A6D
+palette = 14=#527A77
+palette = 15=#998C78

@@ -1,0 +1,23 @@
+# Scholar's library, night: dark leather, parchment text, brass, bottle green, oxblood
+background = #1F1B16
+foreground = #D8CDB8
+cursor-color = #B39A5A
+cursor-text = #1F1B16
+selection-background = #3E3528
+selection-foreground = #D8CDB8
+palette = 0=#2B2620
+palette = 1=#BA6B59
+palette = 2=#7A9471
+palette = 3=#B39A5A
+palette = 4=#7C8EA6
+palette = 5=#9C7A8A
+palette = 6=#6F9590
+palette = 7=#BDB29E
+palette = 8=#766C5E
+palette = 9=#BD6E5F
+palette = 10=#8FA886
+palette = 11=#C7AE6E
+palette = 12=#93A4BA
+palette = 13=#B0909F
+palette = 14=#86AAA5
+palette = 15=#E4DAC6
