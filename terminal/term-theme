@@ -5,37 +5,30 @@
 #   term-theme <name>   any name from the list; "dark" is an alias for gold-dim
 set -euo pipefail
 
-GHOSTTY_CONF="$HOME/.config/ghostty/config.ghostty"
-ZELLIJ_CONF="$HOME/.config/zellij/config.kdl"
+# The shared (symlinked) configs never hold the theme, so switching stays per machine:
+# Ghostty's config includes local.ghostty, Zellij's config uses the theme named "active".
+GHOSTTY_LOCAL="$HOME/.config/ghostty/local.ghostty"
+ZELLIJ_THEMES="$HOME/.config/zellij/themes"
+ZELLIJ_ACTIVE="$ZELLIJ_THEMES/active.kdl"
 LIGHT=(manuscript venetian library stone)
 DARK=(manuscript-dark venetian-dark library-dark stone-dark gold-dim)
 
 # gold-dim is the original pairing: Ghostty's built-in Adventure + Zellij's gold-dim.
 ghostty_theme() { [[ $1 == gold-dim ]] && echo Adventure || echo "royal-$1"; }
 zellij_theme() { [[ $1 == gold-dim ]] && echo gold-dim || echo "royal-$1"; }
-current() {
-    local z
-    z=$(sed -n 's/^theme "\(.*\)"/\1/p' "$ZELLIJ_CONF" 2>/dev/null || true)
-    echo "${z#royal-}"
-}
-
-# Replace the file's top-level theme line, or append one on a fresh machine.
-set_line() {
-    local file=$1 pattern=$2 line=$3
-    mkdir -p "$(dirname "$file")"
-    if grep -q "$pattern" "$file" 2>/dev/null; then
-        sed -i "s/$pattern.*/$line/" "$file"
-    else
-        echo "$line" >> "$file"
-    fi
-}
+current() { sed -n '1s|^// term-theme: ||p' "$ZELLIJ_ACTIVE" 2>/dev/null || true; }
 
 apply() {
     local g z
     g=$(ghostty_theme "$1"); z=$(zellij_theme "$1")
-    set_line "$GHOSTTY_CONF" '^theme = ' "theme = $g"
-    set_line "$ZELLIJ_CONF" '^theme "' "theme \"$z\""
-    # Ghostty reloads its config on SIGUSR2; Zellij picks up config.kdl changes by itself.
+    mkdir -p "$(dirname "$GHOSTTY_LOCAL")" "$ZELLIJ_THEMES"
+    if grep -q '^theme = ' "$GHOSTTY_LOCAL" 2>/dev/null; then
+        sed -i "s/^theme = .*/theme = $g/" "$GHOSTTY_LOCAL"
+    else
+        echo "theme = $g" >> "$GHOSTTY_LOCAL"
+    fi
+    { echo "// term-theme: $1"; sed "s/^    $z {/    active {/" "$ZELLIJ_THEMES/$z.kdl"; } > "$ZELLIJ_ACTIVE"
+    # Ghostty reloads its config on SIGUSR2; Zellij reloads on theme-file changes by itself.
     pkill -USR2 -x ghostty || true
     echo "$1   (ghostty: $g, zellij: $z)"
 }

@@ -18,10 +18,11 @@ GDB config snippets, source with `source <file>` or from `~/.gdbinit`.
   signals still pass through to the app.
 
 ### `terminal/`
-Ghostty + Zellij color themes and a switcher. See `terminal/README.md` for install (symlink) instructions.
+Shared Ghostty + Zellij configs (keybindings), color themes and a per-machine theme switcher. See `terminal/README.md` for install (symlink) instructions.
 - `ghostty/themes/`, `zellij/themes/` - matched light and dark "royal" themes (manuscript, venetian, library, stone) plus `gold-dim`.
 - `term-theme` - switches Ghostty and Zellij together, live (`term-theme next`, `term-theme <name>`).
-- `install.sh` - idempotent symlinker into `~/.config/{ghostty,zellij}/themes/` and `~/.local/bin/`.
+- `ghostty/config.ghostty`, `zellij/config.kdl` - shared configs; the theme lives in untracked per-machine files.
+- `install.sh` - idempotent symlinker into `~/.config/{ghostty,zellij}/` and `~/.local/bin/`, backs up files in the way.
 
 ### `claude/`
 Claude Code configuration and skills.
