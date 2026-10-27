@@ -1,5 +1,5 @@
 #!/bin/bash
-# Line 1: Model | tokens | %used | effort | 5h @reset | 7d @reset | extra
+# Line 1: account | Model | tokens | %used | effort | 5h @reset | 7d @reset | extra
 # Line 2: ~/full/path | branch +N -N
 
 set -f  # disable globbing
@@ -19,6 +19,7 @@ cyan='\033[38;2;46;149;153m'
 red='\033[38;2;255;85;85m'
 yellow='\033[38;2;230;200;0m'
 white='\033[38;2;220;220;220m'
+magenta='\033[38;2;200;120;255m'
 dim='\033[2m'
 reset='\033[0m'
 
@@ -71,20 +72,40 @@ fi
 # Empty when the current model has no effort parameter.
 effort_level=$(echo "$input" | jq -r '.effort.level // empty')
 
-# ===== Build LINE 1: model | tokens | effort =====
+# Logged-in account: company (team/enterprise org name) vs personal (user name)
+account_file="${CLAUDE_CONFIG_DIR:-$HOME}/.claude.json"
+org_type=$(jq -r '.oauthAccount.organizationType // empty' "$account_file" 2>/dev/null)
+org_name=$(jq -r '.oauthAccount.organizationName // empty' "$account_file" 2>/dev/null)
+full_name=$(jq -r '.oauthAccount.fullName // empty' "$account_file" 2>/dev/null)
+
+# "ingenium" -> "ing", "Joseph David Green" -> "jdg"
+short_name() {
+    awk '{ if (NF == 1) s = substr($1, 1, 3); else { s = ""; for (i = 1; i <= NF; i++) s = s substr($i, 1, 1) } print tolower(s) }' <<< "$1"
+}
+
+account=""
+case "$org_type" in
+    claude_team*|claude_enterprise*) account="${magenta} $(short_name "$org_name")${reset}" ;;
+    "") ;;
+    *) account="${yellow} $(short_name "$full_name")${reset}" ;;
+esac
+
+# ===== Build LINE 1: account | model | tokens | effort =====
 out=""
+[ -n "$account" ] && out+="${account} ${dim}|${reset} "
 out+="${blue}${model_name}${reset}"
 
 out+=" ${dim}|${reset} "
 out+="${orange}${used_tokens}/${total_tokens}${reset} ${dim}(${reset}${green}${pct_used}%${reset}${dim})${reset}"
 if [ -n "$effort_level" ]; then
-    out+=" ${dim}|${reset} effort: "
+    # Chess piece by effort: pawn, knight, rook, queen, king
+    out+=" ${dim}|${reset} "
     case "$effort_level" in
-        low)    out+="${dim}low${reset}" ;;
-        medium) out+="${orange}med${reset}" ;;
-        high)   out+="${green}high${reset}" ;;
-        xhigh)  out+="${cyan}xhigh${reset}" ;;
-        max)    out+="${red}max${reset}" ;;
+        low)    out+="${dim}󰡙 low${reset}" ;;
+        medium) out+="${orange}󰡘 med${reset}" ;;
+        high)   out+="${green}󰡛 high${reset}" ;;
+        xhigh)  out+="${cyan}󰡚 xhigh${reset}" ;;
+        max)    out+="${red}󰡗 max${reset}" ;;
         *)      out+="${green}${effort_level}${reset}" ;;
     esac
 fi
