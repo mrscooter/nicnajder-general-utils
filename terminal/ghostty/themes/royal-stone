@@ -1,0 +1,23 @@
+# Stone & pewter: limestone, slate blue, pewter, muted gold
+background = #E6E4DE
+foreground = #262A30
+cursor-color = #7E6526
+cursor-text = #E6E4DE
+selection-background = #CDC8BA
+selection-foreground = #262A30
+palette = 0=#262A30
+palette = 1=#8A3B32
+palette = 2=#456446
+palette = 3=#7A6226
+palette = 4=#34557A
+palette = 5=#694A6B
+palette = 6=#3A636C
+palette = 7=#6C7178
+palette = 8=#676B72
+palette = 9=#A04B40
+palette = 10=#577A58
+palette = 11=#8E7432
+palette = 12=#456A93
+palette = 13=#7E5C80
+palette = 14=#4A7A84
+palette = 15=#949AA1

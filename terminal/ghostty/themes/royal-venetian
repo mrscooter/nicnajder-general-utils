@@ -1,0 +1,23 @@
+# Venetian / Florentine: ivory, burgundy, Medici green, ochre, antique gold
+background = #F5EFE2
+foreground = #2A1E1E
+cursor-color = #8E1B2C
+cursor-text = #F5EFE2
+selection-background = #E6D6B0
+selection-foreground = #2A1E1E
+palette = 0=#2A1E1E
+palette = 1=#8E1B2C
+palette = 2=#2F6146
+palette = 3=#8A6512
+palette = 4=#2E4A78
+palette = 5=#7B2D4F
+palette = 6=#2D6A73
+palette = 7=#7A6B64
+palette = 8=#6F625D
+palette = 9=#AE2F40
+palette = 10=#3E7A59
+palette = 11=#A27A1C
+palette = 12=#42619A
+palette = 13=#94406A
+palette = 14=#3B808C
+palette = 15=#A0918A

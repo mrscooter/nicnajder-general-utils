@@ -1,0 +1,129 @@
+// Scholar's library: linen, leather, bottle green, brass, oxblood.
+themes {
+    royal-library {
+        text_unselected {
+            base 51 41 31
+            background 224 216 197
+            emphasis_0 125 100 32
+            emphasis_1 117 106 90
+            emphasis_2 62 94 69
+            emphasis_3 126 51 40
+        }
+        text_selected {
+            base 51 41 31
+            background 216 203 170
+            emphasis_0 125 100 32
+            emphasis_1 117 106 90
+            emphasis_2 62 94 69
+            emphasis_3 126 51 40
+        }
+        ribbon_selected {
+            base 235 228 212
+            background 125 100 32
+            emphasis_0 235 228 212
+            emphasis_1 235 228 212
+            emphasis_2 235 228 212
+            emphasis_3 235 228 212
+        }
+        ribbon_unselected {
+            base 51 41 31
+            background 213 203 179
+            emphasis_0 125 100 32
+            emphasis_1 117 106 90
+            emphasis_2 117 106 90
+            emphasis_3 126 51 40
+        }
+        table_title {
+            base 125 100 32
+            background 235 228 212
+            emphasis_0 125 100 32
+            emphasis_1 117 106 90
+            emphasis_2 62 94 69
+            emphasis_3 126 51 40
+        }
+        table_cell_selected {
+            base 51 41 31
+            background 216 203 170
+            emphasis_0 125 100 32
+            emphasis_1 117 106 90
+            emphasis_2 62 94 69
+            emphasis_3 126 51 40
+        }
+        table_cell_unselected {
+            base 51 41 31
+            background 224 216 197
+            emphasis_0 125 100 32
+            emphasis_1 117 106 90
+            emphasis_2 62 94 69
+            emphasis_3 126 51 40
+        }
+        list_selected {
+            base 51 41 31
+            background 216 203 170
+            emphasis_0 125 100 32
+            emphasis_1 117 106 90
+            emphasis_2 62 94 69
+            emphasis_3 126 51 40
+        }
+        list_unselected {
+            base 51 41 31
+            background 224 216 197
+            emphasis_0 125 100 32
+            emphasis_1 117 106 90
+            emphasis_2 62 94 69
+            emphasis_3 126 51 40
+        }
+        frame_unselected {
+            base 196 185 158
+            background 235 228 212
+            emphasis_0 117 106 90
+            emphasis_1 117 106 90
+            emphasis_2 117 106 90
+            emphasis_3 117 106 90
+        }
+        frame_selected {
+            base 125 100 32
+            background 235 228 212
+            emphasis_0 125 100 32
+            emphasis_1 117 106 90
+            emphasis_2 62 94 69
+            emphasis_3 235 228 212
+        }
+        frame_highlight {
+            base 126 51 40
+            background 235 228 212
+            emphasis_0 126 51 40
+            emphasis_1 126 51 40
+            emphasis_2 126 51 40
+            emphasis_3 126 51 40
+        }
+        exit_code_success {
+            base 62 94 69
+            background 235 228 212
+            emphasis_0 62 94 69
+            emphasis_1 224 216 197
+            emphasis_2 62 94 69
+            emphasis_3 117 106 90
+        }
+        exit_code_error {
+            base 126 51 40
+            background 235 228 212
+            emphasis_0 125 100 32
+            emphasis_1 235 228 212
+            emphasis_2 235 228 212
+            emphasis_3 235 228 212
+        }
+        multiplayer_user_colors {
+            player_1 125 100 32
+            player_2 62 94 69
+            player_3 126 51 40
+            player_4 62 94 69
+            player_5 107 69 89
+            player_6 63 102 99
+            player_7 117 106 90
+            player_8 140 116 48
+            player_9 80 103 135
+            player_10 127 90 109
+        }
+    }
+}

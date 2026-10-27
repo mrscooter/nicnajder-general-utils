@@ -17,6 +17,13 @@ GDB config snippets, source with `source <file>` or from `~/.gdbinit`.
   multithreaded C++ apps raise constantly (SIGPIPE, SIGUSR1/2, SIG32-34);
   signals still pass through to the app.
 
+### `terminal/`
+Shared Ghostty + Zellij configs (keybindings), color themes and a per-machine theme switcher. See `terminal/README.md` for install (symlink) instructions.
+- `ghostty/themes/`, `zellij/themes/` - matched light and dark "royal" themes (manuscript, venetian, library, stone) plus `gold-dim`.
+- `term-theme` - switches Ghostty and Zellij together, live (`term-theme next`, `term-theme <name>`).
+- `ghostty/config.ghostty`, `zellij/config.kdl` - shared configs; the theme lives in untracked per-machine files.
+- `install.sh` - idempotent symlinker into `~/.config/{ghostty,zellij}/` and `~/.local/bin/`, backs up files in the way.
+
 ### `claude/`
 Claude Code configuration and skills.
 - `GLOBAL-GENERAL-CLAUDE.md` - global instructions template (dev/learning modes,

@@ -1,0 +1,23 @@
+# Venetian / Florentine, night: wine-black, ivory, crimson, Medici green, ochre
+background = #1E1416
+foreground = #EADFD0
+cursor-color = #D2566A
+cursor-text = #1E1416
+selection-background = #4A2A30
+selection-foreground = #EADFD0
+palette = 0=#2C1F21
+palette = 1=#D2566A
+palette = 2=#5E9C78
+palette = 3=#C99A45
+palette = 4=#6F8DBF
+palette = 5=#B4688C
+palette = 6=#5A9EA6
+palette = 7=#CFC2B2
+palette = 8=#7D6B69
+palette = 9=#E06E80
+palette = 10=#78B390
+palette = 11=#DDB05A
+palette = 12=#8AA6D2
+palette = 13=#C9809F
+palette = 14=#73B4BB
+palette = 15=#F2E9DC

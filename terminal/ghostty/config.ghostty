@@ -1,0 +1,9 @@
+keybind = ctrl+shift+w=close_surface
+keybind = ctrl+shift+k=close_tab:this
+keybind = performable:ctrl+shift+arrow_left=goto_split:left
+keybind = performable:ctrl+shift+arrow_right=goto_split:right
+keybind = performable:ctrl+shift+arrow_up=goto_split:up
+keybind = performable:ctrl+shift+arrow_down=goto_split:down
+
+# Machine-local settings; term-theme writes the theme line there.
+config-file = ?local.ghostty

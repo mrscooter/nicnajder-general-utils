@@ -1,0 +1,129 @@
+// Venetian / Florentine: ivory, burgundy, Medici green, ochre, antique gold.
+themes {
+    royal-venetian {
+        text_unselected {
+            base 42 30 30
+            background 234 224 203
+            emphasis_0 142 27 44
+            emphasis_1 122 107 100
+            emphasis_2 47 97 70
+            emphasis_3 162 122 28
+        }
+        text_selected {
+            base 42 30 30
+            background 230 214 176
+            emphasis_0 142 27 44
+            emphasis_1 122 107 100
+            emphasis_2 47 97 70
+            emphasis_3 162 122 28
+        }
+        ribbon_selected {
+            base 245 239 226
+            background 142 27 44
+            emphasis_0 245 239 226
+            emphasis_1 245 239 226
+            emphasis_2 245 239 226
+            emphasis_3 245 239 226
+        }
+        ribbon_unselected {
+            base 42 30 30
+            background 223 209 179
+            emphasis_0 142 27 44
+            emphasis_1 122 107 100
+            emphasis_2 122 107 100
+            emphasis_3 162 122 28
+        }
+        table_title {
+            base 142 27 44
+            background 245 239 226
+            emphasis_0 142 27 44
+            emphasis_1 122 107 100
+            emphasis_2 47 97 70
+            emphasis_3 162 122 28
+        }
+        table_cell_selected {
+            base 42 30 30
+            background 230 214 176
+            emphasis_0 142 27 44
+            emphasis_1 122 107 100
+            emphasis_2 47 97 70
+            emphasis_3 162 122 28
+        }
+        table_cell_unselected {
+            base 42 30 30
+            background 234 224 203
+            emphasis_0 142 27 44
+            emphasis_1 122 107 100
+            emphasis_2 47 97 70
+            emphasis_3 162 122 28
+        }
+        list_selected {
+            base 42 30 30
+            background 230 214 176
+            emphasis_0 142 27 44
+            emphasis_1 122 107 100
+            emphasis_2 47 97 70
+            emphasis_3 162 122 28
+        }
+        list_unselected {
+            base 42 30 30
+            background 234 224 203
+            emphasis_0 142 27 44
+            emphasis_1 122 107 100
+            emphasis_2 47 97 70
+            emphasis_3 162 122 28
+        }
+        frame_unselected {
+            base 205 191 162
+            background 245 239 226
+            emphasis_0 122 107 100
+            emphasis_1 122 107 100
+            emphasis_2 122 107 100
+            emphasis_3 122 107 100
+        }
+        frame_selected {
+            base 142 27 44
+            background 245 239 226
+            emphasis_0 142 27 44
+            emphasis_1 122 107 100
+            emphasis_2 47 97 70
+            emphasis_3 245 239 226
+        }
+        frame_highlight {
+            base 162 122 28
+            background 245 239 226
+            emphasis_0 162 122 28
+            emphasis_1 162 122 28
+            emphasis_2 162 122 28
+            emphasis_3 162 122 28
+        }
+        exit_code_success {
+            base 47 97 70
+            background 245 239 226
+            emphasis_0 47 97 70
+            emphasis_1 234 224 203
+            emphasis_2 47 97 70
+            emphasis_3 122 107 100
+        }
+        exit_code_error {
+            base 174 47 64
+            background 245 239 226
+            emphasis_0 142 27 44
+            emphasis_1 245 239 226
+            emphasis_2 245 239 226
+            emphasis_3 245 239 226
+        }
+        multiplayer_user_colors {
+            player_1 142 27 44
+            player_2 47 97 70
+            player_3 162 122 28
+            player_4 47 97 70
+            player_5 123 45 79
+            player_6 45 106 115
+            player_7 122 107 100
+            player_8 162 122 28
+            player_9 66 97 154
+            player_10 148 64 106
+        }
+    }
+}

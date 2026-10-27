@@ -1,0 +1,129 @@
+// Illuminated manuscript: vellum, iron-gall ink, vermilion rubrics, lapis, gold leaf.
+themes {
+    royal-manuscript {
+        text_unselected {
+            base 43 33 24
+            background 232 220 188
+            emphasis_0 134 101 15
+            emphasis_1 122 108 85
+            emphasis_2 31 74 140
+            emphasis_3 168 50 28
+        }
+        text_selected {
+            base 43 33 24
+            background 226 207 156
+            emphasis_0 134 101 15
+            emphasis_1 122 108 85
+            emphasis_2 31 74 140
+            emphasis_3 168 50 28
+        }
+        ribbon_selected {
+            base 243 234 211
+            background 134 101 15
+            emphasis_0 243 234 211
+            emphasis_1 243 234 211
+            emphasis_2 243 234 211
+            emphasis_3 243 234 211
+        }
+        ribbon_unselected {
+            base 43 33 24
+            background 221 205 166
+            emphasis_0 134 101 15
+            emphasis_1 122 108 85
+            emphasis_2 122 108 85
+            emphasis_3 168 50 28
+        }
+        table_title {
+            base 134 101 15
+            background 243 234 211
+            emphasis_0 134 101 15
+            emphasis_1 122 108 85
+            emphasis_2 31 74 140
+            emphasis_3 168 50 28
+        }
+        table_cell_selected {
+            base 43 33 24
+            background 226 207 156
+            emphasis_0 134 101 15
+            emphasis_1 122 108 85
+            emphasis_2 31 74 140
+            emphasis_3 168 50 28
+        }
+        table_cell_unselected {
+            base 43 33 24
+            background 232 220 188
+            emphasis_0 134 101 15
+            emphasis_1 122 108 85
+            emphasis_2 31 74 140
+            emphasis_3 168 50 28
+        }
+        list_selected {
+            base 43 33 24
+            background 226 207 156
+            emphasis_0 134 101 15
+            emphasis_1 122 108 85
+            emphasis_2 31 74 140
+            emphasis_3 168 50 28
+        }
+        list_unselected {
+            base 43 33 24
+            background 232 220 188
+            emphasis_0 134 101 15
+            emphasis_1 122 108 85
+            emphasis_2 31 74 140
+            emphasis_3 168 50 28
+        }
+        frame_unselected {
+            base 199 183 144
+            background 243 234 211
+            emphasis_0 122 108 85
+            emphasis_1 122 108 85
+            emphasis_2 122 108 85
+            emphasis_3 122 108 85
+        }
+        frame_selected {
+            base 134 101 15
+            background 243 234 211
+            emphasis_0 134 101 15
+            emphasis_1 122 108 85
+            emphasis_2 31 74 140
+            emphasis_3 243 234 211
+        }
+        frame_highlight {
+            base 168 50 28
+            background 243 234 211
+            emphasis_0 168 50 28
+            emphasis_1 168 50 28
+            emphasis_2 168 50 28
+            emphasis_3 168 50 28
+        }
+        exit_code_success {
+            base 61 107 53
+            background 243 234 211
+            emphasis_0 61 107 53
+            emphasis_1 232 220 188
+            emphasis_2 31 74 140
+            emphasis_3 122 108 85
+        }
+        exit_code_error {
+            base 168 50 28
+            background 243 234 211
+            emphasis_0 134 101 15
+            emphasis_1 243 234 211
+            emphasis_2 243 234 211
+            emphasis_3 243 234 211
+        }
+        multiplayer_user_colors {
+            player_1 134 101 15
+            player_2 31 74 140
+            player_3 168 50 28
+            player_4 61 107 53
+            player_5 122 46 92
+            player_6 36 105 106
+            player_7 122 108 85
+            player_8 156 117 16
+            player_9 53 99 168
+            player_10 148 64 111
+        }
+    }
+}

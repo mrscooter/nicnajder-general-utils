@@ -1,0 +1,23 @@
+# Illuminated manuscript, night: oak-ink ground, vellum text, gold leaf, vermilion, lapis
+background = #1C1712
+foreground = #E6D9BC
+cursor-color = #D1A53E
+cursor-text = #1C1712
+selection-background = #4A3B26
+selection-foreground = #E6D9BC
+palette = 0=#2A231C
+palette = 1=#D6643F
+palette = 2=#7FA060
+palette = 3=#D1A53E
+palette = 4=#6A8FCB
+palette = 5=#B0708F
+palette = 6=#5FA39C
+palette = 7=#CDBF9F
+palette = 8=#7A6E5C
+palette = 9=#E06B4C
+palette = 10=#96B676
+palette = 11=#E3BA55
+palette = 12=#86A6DB
+palette = 13=#C688A5
+palette = 14=#78B8B0
+palette = 15=#EFE4CC
