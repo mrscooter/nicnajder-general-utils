@@ -1,6 +1,6 @@
 ---
 name: 3designs
-description: Implement a web-app GUI/design ask as N runtime-switchable design variants (default 3) behind a temporary floating dev-only switcher, so the user compares them live in the running app and picks one; supports iteration ("keep A, add 2 more") and finalization ("go with B") that leaves zero trace of the experiment. Use when the user invokes /3designs or asks for multiple switchable design variants of a UI element, view, or menu. Design/GUI/styling/layout tasks only - never for APIs, data, or program logic.
+description: Implement a web-app GUI/design ask as N runtime-switchable design variants (default 3) behind a temporary floating dev-only switcher, so the user compares them live in the running app and picks one; supports iteration ("keep A, add 2 more") and finalization ("go with B") that leaves zero trace of the experiment. Use when the user invokes /ncn:3designs or asks for multiple switchable design variants of a UI element, view, or menu. Design/GUI/styling/layout tasks only - never for APIs, data, or program logic.
 ---
 
 # 3designs - compare N live design variants, pick one, leave no trace
@@ -15,7 +15,7 @@ GUI/design/styling/layout work in web apps only: spacing, typography, color, com
 
 Free text; canonical forms:
 
-- "use /3designs: <design ask>" - N defaults to 3.
+- "use /ncn:3designs: <design ask>" - N defaults to 3.
 - "... in N variants" - overrides N.
 - "keep A [and C], add K more" - iteration round (see Iteration).
 - "go with B" / "finalize B" - finalization (see Finalization).

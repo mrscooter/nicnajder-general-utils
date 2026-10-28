@@ -1,0 +1,5 @@
+{
+  "name": "ncn",
+  "description": "Shared skills and a session-start check that the shared Claude config is installed",
+  "author": { "name": "mrscooter" }
+}

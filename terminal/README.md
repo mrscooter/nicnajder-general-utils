@@ -21,7 +21,7 @@ term-theme manuscript
 | `zellij/themes/*` | `~/.config/zellij/themes/*` |
 | `term-theme` | `~/.local/bin/term-theme` |
 
-A regular file in the way is moved to `<name>.bak-<timestamp>`, never overwritten. The script is idempotent: re-run it after a `git pull` that adds new files. Edits to existing files need no re-run, the symlinks already point into the checkout. On first install it activates `gold-dim`.
+Anything in the way is moved to `backups/<date>_<time>/` in the checkout, never overwritten. The script is idempotent: re-run it after a `git pull` that adds new files. Edits to existing files need no re-run, the symlinks already point into the checkout. On first install it activates `gold-dim`.
 
 ## Per-machine theme
 

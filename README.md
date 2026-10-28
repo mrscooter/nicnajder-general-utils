@@ -21,10 +21,12 @@ untracked local files next to them, which the shared files pull in.
 ```
 
 Idempotent: re-run after a `git pull` that adds files (edits to existing files need no re-run).
-A regular file in the way is moved to `<name>.bak-<timestamp>`, never overwritten; an existing
-`~/.claude/CLAUDE.md` is only replaced after typing `YES`. Links into the repo whose target was
-deleted or renamed are removed. Each component's `install.sh` also runs on its own; the shared
-helpers are in `lib/link.sh`.
+Anything in the way of a link is never overwritten: it is moved to `backups/<date>_<time>/` in this
+checkout (gitignored, one directory per run) under its path relative to `~`, so
+`cp -a backups/<date>_<time>/. ~/` restores it. An existing `~/.claude/CLAUDE.md` is only replaced
+after a warning and typing `YES`. Links into the repo whose target was deleted or renamed are
+removed. Each component's `install.sh` also runs on its own; the shared helpers are in
+`lib/link.sh`.
 
 ## Contents
 
@@ -42,32 +44,40 @@ Shared Ghostty + Zellij configs (keybindings), color themes and a per-machine th
 - `install.sh` - symlinks into `~/.config/{ghostty,zellij}/` and `~/.local/bin/`.
 
 ### `claude/`
-Claude Code configuration and skills. `install.sh` links them into `~/.claude/`:
+Claude Code configuration and skills. `install.sh` (needs `claude` and `jq`) sets up a machine
+like this:
 
-| repo | linked as |
+| on the machine | what it is |
 |---|---|
-| `CLAUDE.md` | `~/.claude/CLAUDE.md` (asks for `YES` before replacing an existing one) |
-| `GLOBAL-GENERAL-CLAUDE.md` | `~/.claude/GLOBAL-GENERAL-CLAUDE.md` |
-| `skills/*` | `~/.claude/skills/*` |
-| `statusline-command.sh` | `~/.claude/statusline-command.sh` |
+| `~/.claude/CLAUDE.md` | link to `TOP-LEVEL-CLAUDE.md`; an existing one is only replaced after a warning and `YES` |
+| `~/.claude/GLOBAL-GENERAL-CLAUDE.md` | link to `GLOBAL-GENERAL-CLAUDE.md` |
+| `~/.claude/LOCAL-CLAUDE.md` | this machine's own rules: a plain untracked file, created if missing, never touched after |
+| `~/.claude/statusline-command.sh` | link to `statusline-command.sh` |
+| plugin `ncn@nicnajder-general-utils` | `claude/` itself, loaded in place from the checkout: the skills and a session-start check |
 
-`settings.json` and `keybindings.json` stay per machine and are not touched.
+`settings.json` and `keybindings.json` stay per machine; install never edits them, only
+`claude plugin` adds its own two entries for the plugin. `~/.claude/skills` must be a real directory
+(or absent): install removes a link to `claude/skills` there, and moves a link anywhere else to the
+backups.
 
-- `CLAUDE.md` - shared entry point: imports `GLOBAL-GENERAL-CLAUDE.md` and the machine's own
-  `~/.claude/LOCAL-CLAUDE.md`, whose rules win where they differ. Both are mandatory: Claude stops
-  and says so if either is missing. Put machine-specific instructions and imports in
-  `LOCAL-CLAUDE.md`; install creates it with only a `# Machine-specific rules` heading and never
-  touches it after. Keep that heading: it is how Claude tells an empty file from a missing one.
+- `TOP-LEVEL-CLAUDE.md` - entry point, linked as `~/.claude/CLAUDE.md`: imports
+  `GLOBAL-GENERAL-CLAUDE.md` and `~/.claude/LOCAL-CLAUDE.md`, whose rules win where they differ.
+  It is not named `CLAUDE.md` so that Claude doesn't load it while working on this repo.
 - `GLOBAL-GENERAL-CLAUDE.md` - general rules for every machine (dev/learning modes,
   honest-feedback policy, code/formatting/debugging rules).
 - `statusline-command.sh` - two-line status line (account, model, tokens, limits, effort; path, branch).
-- `skills/3designs/` - skill for implementing a GUI/design ask as N runtime-switchable design
-  variants behind a temporary dev-only switcher, then finalizing the chosen one without a trace.
-- `skills/task-journal/` - skill for keeping a persistent on-disk task journal
+- `.claude-plugin/plugin.json` - the `ncn` plugin; `.claude-plugin/marketplace.json` at the repo
+  root lists it. Edits take effect at the next session start or after `/reload-plugins`.
+- `hooks/check-install.sh` - runs `install.sh --check` at every session start; silent when all is
+  in place, otherwise warns you and tells Claude what is missing.
+- `skills/3designs/` - `/ncn:3designs`, for implementing a GUI/design ask as N runtime-switchable
+  design variants behind a temporary dev-only switcher, then finalizing the chosen one without a
+  trace.
+- `skills/task-journal/` - `/ncn:task-journal`, for keeping a persistent on-disk task journal
   across sessions: splits notes by role and mutability (brief, findings, status,
   progress log) so they survive context-window compaction and handoffs. Includes
   `SKILL.md` and file templates.
-- `skills/review-walkthrough/` - skill for triaging a code-review findings list one
-  at a time (summary, severity, type, proposed fix), gathering an accept/reject/
+- `skills/review-walkthrough/` - `/ncn:review-walkthrough`, for triaging a code-review findings
+  list one at a time (summary, severity, type, proposed fix), gathering an accept/reject/
   defer/won't-fix decision per finding, then implementing the agreed outcome. Pairs
   with `/code-review`.

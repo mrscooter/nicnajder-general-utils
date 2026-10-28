@@ -1,71 +1,114 @@
+# shellcheck shell=bash
 # Helpers for the component installers; source it with the installer's arguments:
 #   source "$SRC/../lib/link.sh" "$@"
 # A --check argument switches to report-only mode: nothing is changed, every difference from the
 # repo is printed, and finish exits 1 if there was any.
 
-REPO=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
-STAMP=$(date +%Y%m%d-%H%M%S)
+REPO=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)
+# Anything in the way goes to backups/<stamp>/ in this checkout (gitignored), under its path relative
+# to $HOME. ./install.sh passes one stamp to every component, so a run makes one directory.
+BACKUP=$REPO/backups/${INSTALL_STAMP:-$(date +%Y-%m-%d_%H-%M-%S)}
 CHECK=0
-[[ ${1:-} == --check ]] && CHECK=1
+for a; do
+    case $a in
+        --check) CHECK=1 ;;
+        *) echo "unknown argument: $a (only --check)" >&2; exit 2 ;;
+    esac
+done
 DRIFT=0
 CHANGED=0
+BACKED_UP=0
 
 problem() { echo "  $*"; DRIFT=1; }
 changed() { echo "  $*"; CHANGED=1; }
 
-# link FROM TO [confirm]: make TO a symlink to FROM. A regular file or directory in the way is moved
-# to TO.bak-<stamp>, never overwritten. With "confirm", anything already at TO (even a symlink) is
-# only replaced after the user types YES.
+# real PATH: PATH with its symlinks resolved; a trailing part that doesn't exist is kept as given.
+real() {
+    local p=$1 tail=
+    while [[ ! -d $p ]]; do tail=/$(basename "$p")$tail; p=$(dirname "$p"); done
+    echo "$(cd "$p" && pwd -P)$tail"
+}
+
+# outside DIR...: stop if any DIR resolves into this checkout (it, or a parent, links to a directory of
+# it); installing through it would write among the tracked files. Components call it first with every
+# directory they write to.
+outside() {
+    local d
+    for d; do
+        [[ $(real "$d")/ == "$REPO"/* ]] && problem "$d: links into this checkout, not touching it"
+    done
+    (( ! DRIFT )) || finish
+}
+
+backup() {
+    local dest=$BACKUP/${1#"$HOME"/}
+    mkdir -p "$(dirname "$dest")"
+    mv "$1" "$dest"
+    BACKED_UP=1
+    changed "backed up $1 -> $dest"
+}
+
+# link FROM TO [confirm]: make TO a symlink to FROM. Anything else at TO (a file, a directory, a link
+# elsewhere) is moved to $BACKUP first, never overwritten; with "confirm", only after the user types
+# YES.
 link() {
     local from=$1 to=$2 confirm=${3:-}
-    [[ -L $to && $(readlink "$to") == "$from" ]] && return 0
+    # -ef also matches a link made through another path to this checkout.
+    [[ $to -ef $from ]] && return 0
     if (( CHECK )); then
         if [[ -L $to ]]; then problem "$to: links to $(readlink "$to"), expected $from"
-        elif [[ -e $to ]]; then problem "$to: regular file, expected a link to $from"
+        elif [[ -e $to ]]; then problem "$to: not a link, expected a link to $from"
         else problem "$to: missing, expected a link to $from"; fi
         return 0
     fi
-    if [[ -n $confirm && ( -e $to || -L $to ) ]]; then
-        if ! confirmed "$to"; then
-            changed "$to: left as is"
+    if [[ -e $to || -L $to ]]; then
+        if [[ -n $confirm ]] && ! confirmed "$to" "$from"; then
+            problem "$to: left as is; re-run once you have dealt with it"
             return 0
         fi
-        mv "$to" "$to.bak-$STAMP"
-        changed "backed up $to -> $to.bak-$STAMP"
-    elif [[ -e $to && ! -L $to ]]; then
-        mv "$to" "$to.bak-$STAMP"
-        changed "backed up $to -> $to.bak-$STAMP"
+        backup "$to"
     fi
     mkdir -p "$(dirname "$to")"
-    ln -sfn "$from" "$to"
+    ln -s "$from" "$to"
     changed "$to -> $from"
 }
 
 confirmed() {
-    local answer=
-    echo "  WARNING: $1 already exists and would be replaced by a link into this repo." >&2
-    echo "  The current one would be kept as $1.bak-$STAMP." >&2
-    printf '  Type YES to replace it: ' >&2
+    local to=$1 from=$2 what answer=
+    if [[ -L $to ]]; then what="a link to $(readlink "$to")"
+    elif [[ -d $to ]]; then what="a directory"
+    else what="a regular file"; fi
+    {
+        echo
+        echo "  ################################################################################"
+        echo "  #"
+        echo "  #  WARNING: $to already exists, $what."
+        echo "  #"
+        echo "  #  Replacing it makes it a link to $from."
+        echo "  #  Whatever it holds now stops applying. It would be moved to"
+        echo "  #  $BACKUP/${to#"$HOME"/}"
+        echo "  #"
+        echo "  ################################################################################"
+        printf '  Type YES to replace it, anything else to leave it as is: '
+    } >&2
     read -r answer 2>/dev/null < /dev/tty || echo >&2
     [[ $answer == YES ]]
 }
 
-# prune DIR: remove symlinks in DIR that point into this repo at files that no longer exist
-# (deleted or renamed in the repo).
+# prune DIR [WHY]: remove links in DIR that point into this checkout at files that no longer exist
+# (deleted or renamed in the repo). With WHY, remove every link in DIR that points into the checkout.
 prune() {
-    local l
+    local l why=${2:-}
     for l in "$1"/*; do
-        [[ -L $l && ! -e $l && $(readlink "$l") == "$REPO"/* ]] || continue
-        if (( CHECK )); then problem "$l: stale link to $(readlink "$l")"
-        else rm "$l"; changed "removed stale link $l"; fi
+        [[ -L $l && ( -n $why || ! -e $l ) && $(real "$(readlink "$l")")/ == "$REPO"/* ]] || continue
+        if (( CHECK )); then problem "$l: ${why:-stale link}, remove it"
+        else rm "$l"; changed "removed $l (${why:-stale link})"; fi
     done
 }
 
 finish() {
-    if (( CHECK )); then
-        (( DRIFT )) && exit 1
-        echo "  ok"
-    elif (( ! CHANGED )); then
-        echo "  up to date"
-    fi
+    (( BACKED_UP )) && echo "  backups in $BACKUP"
+    (( DRIFT )) && exit 1
+    if (( CHECK )); then echo "  ok"
+    elif (( ! CHANGED )); then echo "  up to date"; fi
 }

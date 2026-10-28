@@ -3,8 +3,10 @@
 # ~/.config and ~/.local/bin. Idempotent: re-run after pulling new files. --check reports only.
 set -euo pipefail
 
-SRC=$(cd "$(dirname "$0")" && pwd)
+SRC=$(cd "$(dirname "$0")" && pwd -P)
+# shellcheck source=../lib/link.sh
 source "$SRC/../lib/link.sh" "$@"
+outside "$HOME/.config/ghostty/themes" "$HOME/.config/zellij/themes" "$HOME/.local/bin"
 
 link "$SRC/ghostty/config.ghostty" "$HOME/.config/ghostty/config.ghostty"
 link "$SRC/zellij/config.kdl" "$HOME/.config/zellij/config.kdl"
@@ -17,7 +19,11 @@ link "$SRC/term-theme" "$HOME/.local/bin/term-theme"
 # The shared Zellij config needs a local "active" theme to exist.
 if [[ ! -e $HOME/.config/zellij/themes/active.kdl ]]; then
     if (( CHECK )); then problem "$HOME/.config/zellij/themes/active.kdl: missing, run term-theme <name>"
-    else changed "$("$SRC/term-theme" gold-dim)"; fi
+    else
+        # A failed term-theme can leave a half-written active.kdl that would pass as installed.
+        out=$("$SRC/term-theme" gold-dim) || { rm -f "$HOME/.config/zellij/themes/active.kdl"; exit 1; }
+        changed "$out"
+    fi
 fi
 
 case ":$PATH:" in
