@@ -7,11 +7,11 @@ Shared Ghostty + Zellij configs (keybindings etc.) and matched color themes in a
 Requires a checkout at `~/Tools/nicnajder-general-utils` (any path works, the script resolves its own location), Ghostty >= 1.2, Zellij >= 0.45, and `~/.local/bin` on `PATH`.
 
 ```bash
-~/Tools/nicnajder-general-utils/terminal/install.sh
+~/Tools/nicnajder-general-utils/install.sh terminal    # or terminal/install.sh directly
 term-theme manuscript
 ```
 
-`install.sh` symlinks into the checkout:
+`install.sh --check terminal` reports what differs from the repo without changing anything. `install.sh` symlinks into the checkout:
 
 | repo | linked as |
 |---|---|
@@ -27,7 +27,7 @@ A regular file in the way is moved to `<name>.bak-<timestamp>`, never overwritte
 
 The shared configs never contain the theme, so switching never dirties the repo:
 
-- `config.ghostty` ends with `config-file = ?local.ghostty`; `term-theme` writes `theme = ...` into the untracked `~/.config/ghostty/local.ghostty`. Other machine-specific Ghostty settings (font size, ...) can go there too.
+- `config.ghostty` includes `config-file = ?local.ghostty` (Ghostty reads included files after the main one, so local values win); `term-theme` writes `theme = ...` into the untracked `~/.config/ghostty/local.ghostty`. Other machine-specific Ghostty settings (font size, ...) can go there too.
 - `config.kdl` uses `theme "active"`; `term-theme` writes the untracked `~/.config/zellij/themes/active.kdl`, a copy of the chosen theme renamed to `active`, with a `// term-theme: <name>` first line recording the choice.
 
 ## Editing the configs
