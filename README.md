@@ -18,6 +18,7 @@ untracked local files next to them, which the shared files pull in.
 ./install.sh                     # all components (claude, terminal)
 ./install.sh claude              # only some
 ./install.sh --check             # report what differs from the repo, change nothing; exit 1 if anything does
+./install.sh --help              # what it does; each component too: claude/install.sh --help
 ```
 
 Idempotent: re-run after a `git pull` that adds files (edits to existing files need no re-run).

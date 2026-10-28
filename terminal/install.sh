@@ -1,9 +1,30 @@
 #!/usr/bin/env bash
-# Symlink the shared Ghostty/Zellij configs, themes and term-theme from this checkout into
-# ~/.config and ~/.local/bin. Idempotent: re-run after pulling new files. --check reports only.
+# Symlink the shared Ghostty/Zellij configs, themes and term-theme from this checkout; see --help.
 set -euo pipefail
 
 SRC=$(cd "$(dirname "$0")" && pwd -P)
+usage() {
+    cat <<EOF
+Usage: $0 [--check]
+
+Symlink the shared terminal configs from this checkout:
+  ~/.config/ghostty/config.ghostty, ~/.config/ghostty/themes/*
+  ~/.config/zellij/config.kdl, ~/.config/zellij/themes/*
+  ~/.local/bin/term-theme   switches Ghostty and Zellij themes together; without an argument it
+                            lists the themes
+On first install it activates the gold-dim theme. The chosen theme stays per machine, in untracked
+~/.config/ghostty/local.ghostty and ~/.config/zellij/themes/active.kdl. Links whose target was
+deleted or renamed in the repo are removed. Idempotent: re-run after a git pull that adds files.
+
+Options:
+  --check     report what differs from the repo, change nothing
+  -h, --help  show this help
+
+Anything in the way of a link is moved to backups/<date>_<time>/ in this checkout, never
+overwritten. Exit status: 0 all done or all in place, 1 something failed or differs, 2 bad
+arguments.
+EOF
+}
 # shellcheck source=../lib/link.sh
 source "$SRC/../lib/link.sh" "$@"
 outside "$HOME/.config/ghostty/themes" "$HOME/.config/zellij/themes" "$HOME/.local/bin"

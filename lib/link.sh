@@ -1,8 +1,9 @@
 # shellcheck shell=bash
-# Helpers for the component installers; source it with the installer's arguments:
+# Helpers for the component installers; define usage() first, then source it with the installer's
+# arguments:
 #   source "$SRC/../lib/link.sh" "$@"
-# A --check argument switches to report-only mode: nothing is changed, every difference from the
-# repo is printed, and finish exits 1 if there was any.
+# -h/--help prints usage. A --check argument switches to report-only mode: nothing is changed, every
+# difference from the repo is printed, and finish exits 1 if there was any.
 
 REPO=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)
 # Anything in the way goes to backups/<stamp>/ in this checkout (gitignored), under its path relative
@@ -11,8 +12,9 @@ BACKUP=$REPO/backups/${INSTALL_STAMP:-$(date +%Y-%m-%d_%H-%M-%S)}
 CHECK=0
 for a; do
     case $a in
+        -h|--help) usage; exit 0 ;;
         --check) CHECK=1 ;;
-        *) echo "unknown argument: $a (only --check)" >&2; exit 2 ;;
+        *) echo "unknown argument: $a (see --help)" >&2; exit 2 ;;
     esac
 done
 DRIFT=0

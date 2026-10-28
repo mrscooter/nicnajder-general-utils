@@ -1,11 +1,40 @@
 #!/usr/bin/env bash
-# Set up the shared Claude Code config from this checkout: link the instruction files and the status
-# line into ~/.claude and install the ncn plugin (skills, session-start check) from it. Idempotent:
-# re-run after pulling new files. --check reports only. settings.json and keybindings.json stay per
-# machine; only `claude plugin` adds its own entries for the plugin.
+# Set up the shared Claude Code config from this checkout in ~/.claude; see --help.
 set -euo pipefail
 
 SRC=$(cd "$(dirname "$0")" && pwd -P)
+usage() {
+    cat <<EOF
+Usage: $0 [--check]
+
+Set up the shared Claude Code config from this checkout in ~/.claude:
+  CLAUDE.md                 link to claude/TOP-LEVEL-CLAUDE.md, which imports the two files below
+                            (local rules win); an existing one is replaced only after a warning
+                            and typing YES
+  GLOBAL-GENERAL-CLAUDE.md  link to claude/GLOBAL-GENERAL-CLAUDE.md, the rules for every machine
+  LOCAL-CLAUDE.md           this machine's own rules: a plain file, created if missing, never
+                            touched after
+  statusline-command.sh     link to claude/statusline-command.sh (point statusLine in
+                            settings.json at it yourself)
+  plugin ncn@nicnajder-general-utils
+                            claude/ itself, loaded in place: the skills (/ncn:3designs, ...) and a
+                            session-start check that runs this script with --check and warns if
+                            anything is off
+Also removes links in ~/.claude/skills that point into this checkout (old skill links). When
+~/.claude/skills itself is a link, it is removed if it points to claude/skills, else moved to the
+backups. Idempotent: re-run after a git pull that adds files.
+Needs the claude and jq commands. settings.json and keybindings.json are never edited here; only
+\`claude plugin\` adds its own two entries for the plugin.
+
+Options:
+  --check     report what differs from the repo, change nothing
+  -h, --help  show this help
+
+Anything in the way of a link is moved to backups/<date>_<time>/ in this checkout, never
+overwritten. Exit status: 0 all done or all in place, 1 something failed or differs, 2 bad
+arguments.
+EOF
+}
 # shellcheck source=../lib/link.sh
 source "$SRC/../lib/link.sh" "$@"
 
