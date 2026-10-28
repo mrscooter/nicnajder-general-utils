@@ -1,7 +1,6 @@
 # Global Instructions
 
-Instructions come from two files, both imported through `~/.claude/`:
-- General rules for every machine: @~/.claude/GLOBAL-GENERAL-CLAUDE.md (symlink to `nicnajder-general-utils/claude/GLOBAL-GENERAL-CLAUDE.md`)
-- Rules for this machine only: @~/.claude/LOCAL-CLAUDE.md (a local file, in no repo). Where they differ from the general rules, they win.
+- General rules: @~/.claude/GLOBAL-GENERAL-CLAUDE.md
+- This machine's rules, win over general rules on conflict: @~/.claude/LOCAL-CLAUDE.md
 
-**Symlink integrity:** this file, the general rules and personal skills under `~/.claude/skills/` are symlinks into the `nicnajder-general-utils` checkout. A broken one makes the import or skill silently yield nothing. If the general rules seem missing or empty, or a referenced skill won't load, **STOP and loudly tell the user; do not silently proceed with missing instructions.**
+Both imports are mandatory and fail silently. If either is absent (LOCAL-CLAUDE.md always has at least its `# Machine-specific rules` heading), or a skill under `~/.claude/skills/` won't load, **STOP and loudly tell the user.**

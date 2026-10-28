@@ -12,9 +12,11 @@ DEST=$HOME/.claude
 # LOCAL-CLAUDE.md. An existing CLAUDE.md is only replaced after an explicit YES.
 link "$SRC/CLAUDE.md" "$DEST/CLAUDE.md" confirm
 link "$SRC/GLOBAL-GENERAL-CLAUDE.md" "$DEST/GLOBAL-GENERAL-CLAUDE.md"
+# A missing import and an empty file look the same to Claude, so LOCAL-CLAUDE.md starts with a
+# heading that CLAUDE.md treats as proof the file is there.
 if [[ ! -e $DEST/LOCAL-CLAUDE.md ]]; then
     if (( CHECK )); then problem "$DEST/LOCAL-CLAUDE.md: missing"
-    else : > "$DEST/LOCAL-CLAUDE.md"; changed "created empty $DEST/LOCAL-CLAUDE.md"; fi
+    else echo "# Machine-specific rules" > "$DEST/LOCAL-CLAUDE.md"; changed "created $DEST/LOCAL-CLAUDE.md"; fi
 fi
 
 for d in "$SRC"/skills/*/; do link "${d%/}" "$DEST/skills/$(basename "$d")"; done

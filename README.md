@@ -54,8 +54,10 @@ Claude Code configuration and skills. `install.sh` links them into `~/.claude/`:
 `settings.json` and `keybindings.json` stay per machine and are not touched.
 
 - `CLAUDE.md` - shared entry point: imports `GLOBAL-GENERAL-CLAUDE.md` and the machine's own
-  `~/.claude/LOCAL-CLAUDE.md` (created empty if missing, never touched after), whose rules win
-  where they differ. Put machine-specific instructions and imports in `LOCAL-CLAUDE.md`.
+  `~/.claude/LOCAL-CLAUDE.md`, whose rules win where they differ. Both are mandatory: Claude stops
+  and says so if either is missing. Put machine-specific instructions and imports in
+  `LOCAL-CLAUDE.md`; install creates it with only a `# Machine-specific rules` heading and never
+  touches it after. Keep that heading: it is how Claude tells an empty file from a missing one.
 - `GLOBAL-GENERAL-CLAUDE.md` - general rules for every machine (dev/learning modes,
   honest-feedback policy, code/formatting/debugging rules).
 - `statusline-command.sh` - two-line status line (account, model, tokens, limits, effort; path, branch).
