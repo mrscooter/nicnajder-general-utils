@@ -82,3 +82,6 @@ backups.
   list one at a time (summary, severity, type, proposed fix), gathering an accept/reject/
   defer/won't-fix decision per finding, then implementing the agreed outcome. Pairs
   with `/code-review`.
+- `skills/step-by-step/` - `/ncn:step-by-step`, for leading the user through a how-to one
+  actionable step per message (command chunk, expected result), waiting for "next" in between.
+- `skills/nitrancina/` - `/ncn:nitrancina`, Claude speaks nitránčina, the Slovak dialect of Nitra.
