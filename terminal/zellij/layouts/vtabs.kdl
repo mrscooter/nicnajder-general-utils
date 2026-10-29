@@ -1,0 +1,22 @@
+// Vertical tab bar on the left (cfal/zellij-vertical-tabs v0.1.0, plugins/zellij-vertical-tabs.wasm).
+// Usage: zellij -l vtabs. Alt s (config.kdl) toggles the bar selectable, to focus and resize it.
+
+layout {
+    pane split_direction="vertical" {
+        pane size=18 borderless=true {
+            plugin location="file:~/.config/zellij/plugins/zellij-vertical-tabs.wasm" {
+                // Colors match themes/gold-dim.kdl (plugin named colors are fixed, not theme-driven)
+                format "#[fg=#5a5650]{index} #[fg=#968f87]{name}"
+                format_active "#[fg=#b08e48,bold]▶ {index} {name} #[fg=#7a6230]{indicators}"
+                indicator_active ""
+                indicator_fullscreen "□"
+                indicator_sync "⇄"
+                max_name_length 14
+            }
+        }
+        pane
+    }
+    pane size=1 borderless=true {
+        plugin location="zellij:status-bar"
+    }
+}

@@ -19,6 +19,8 @@ term-theme manuscript
 | `zellij/config.kdl` | `~/.config/zellij/config.kdl` |
 | `ghostty/themes/*` | `~/.config/ghostty/themes/*` |
 | `zellij/themes/*` | `~/.config/zellij/themes/*` |
+| `zellij/layouts/*` | `~/.config/zellij/layouts/*` |
+| `zellij/plugins/*` | `~/.config/zellij/plugins/*` |
 | `term-theme` | `~/.local/bin/term-theme` |
 
 Anything in the way is moved to `backups/<date>_<time>/` in the checkout, never overwritten. The script is idempotent: re-run it after a `git pull` that adds new files. Edits to existing files need no re-run, the symlinks already point into the checkout. On first install it activates `gold-dim`.
@@ -43,6 +45,12 @@ term-theme venetian-dark    # pick one by name; "dark" is an alias for gold-dim
 ```
 
 Both apply live: Ghostty reloads on `SIGUSR2`, Zellij reloads when `themes/active.kdl` changes.
+
+```bash
+zellij -l vtabs             # tab list in a left sidebar instead of the top tab bar
+```
+
+`layouts/vtabs.kdl` runs `plugins/zellij-vertical-tabs.wasm`, the `v0.1.0` release of [cfal/zellij-vertical-tabs](https://github.com/cfal/zellij-vertical-tabs) (MIT). On first launch Zellij asks for the plugin's permissions: focus the sidebar and press `y`. `Alt s` toggles the sidebar selectable, so it can be focused and resized. Its colors are fixed to `gold-dim` and do not follow `term-theme`. To upgrade, replace the `.wasm` with a newer release and commit.
 
 ## Themes
 
