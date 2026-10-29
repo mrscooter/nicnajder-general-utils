@@ -5,9 +5,14 @@ layout {
     pane split_direction="vertical" {
         pane size=18 borderless=true {
             plugin location="file:~/.config/zellij/plugins/zellij-vertical-tabs.wasm" {
-                // Colors match themes/gold-dim.kdl (plugin named colors are fixed, not theme-driven)
-                format "#[fg=#5a5650]{index} #[fg=#968f87]{name}"
-                format_active "#[fg=#b08e48,bold]▶ {index} {name} #[fg=#7a6230]{indicators}"
+                // The plugin can't read the Zellij theme, so colors are ANSI palette slots
+                // (3 accent, 8 dim, default text) and follow the terminal theme; term-theme
+                // pairs every Ghostty palette with its matching Zellij theme.
+                // On inactive rows fill draws nothing; it only makes the plugin reset the
+                // index color, which an unstyled {name} would otherwise inherit.
+                format "#[fg=8]{index} #[fg=none,fill]{name}"
+                // Like Zellij's own active tab: accent background, text in the background color.
+                format_active "#[bg=3,fill,bold]▶ {index} {name} {indicators}"
                 indicator_active ""
                 indicator_fullscreen "□"
                 indicator_sync "⇄"

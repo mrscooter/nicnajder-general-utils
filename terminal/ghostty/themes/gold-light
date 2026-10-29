@@ -1,0 +1,23 @@
+# Day pair of gold-dim: soft warm-gray ground, dark gray text, muted gold accents
+background = #E3DFD7
+foreground = #282521
+cursor-color = #715720
+cursor-text = #E3DFD7
+selection-background = #C9BFA6
+selection-foreground = #282521
+palette = 0=#282521
+palette = 1=#963826
+palette = 2=#46612A
+palette = 3=#715720
+palette = 4=#2D5180
+palette = 5=#773B60
+palette = 6=#29615E
+palette = 7=#5A554E
+palette = 8=#76716A
+palette = 9=#A84730
+palette = 10=#567434
+palette = 11=#86692C
+palette = 12=#3B6398
+palette = 13=#8B4A72
+palette = 14=#367470
+palette = 15=#8D887F
