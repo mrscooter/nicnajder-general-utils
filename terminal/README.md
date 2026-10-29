@@ -3,7 +3,7 @@
 Shared configs for the [Ghostty](https://ghostty.org) terminal and the [Zellij](https://zellij.dev) multiplexer, with matching color themes for both:
 
 - **Configs**: mostly stock, with a few keybinding changes, all [listed below](#keybindings-that-differ-from-stock).
-- **9 themes** (4 light, 5 dark) in a "medieval manuscript meets modern terminal" style: aged pigments, gold and ink, no rainbow. Each theme comes as a Ghostty + Zellij pair.
+- **10 themes** (5 light, 5 dark) in a "medieval manuscript meets modern terminal" style: aged pigments, gold and ink, no rainbow. Each theme comes as a Ghostty + Zellij pair.
 - **`term-theme`** switches Ghostty and Zellij together, live, in every open window. The chosen theme is per machine and never touches the repo.
 - **`vtabs`**, a Zellij layout with the tab list in a left sidebar.
 
@@ -36,7 +36,7 @@ zellij -l vtabs           # start a session with the tab list in a left sidebar
 
 - On first launch Zellij asks to grant the sidebar plugin its permissions: focus the sidebar and press `y`.
 - `Alt s` makes the sidebar focusable, so you can resize it; press it again to switch back.
-- The sidebar colors are fixed to `gold-dim` and don't follow `term-theme`.
+- The sidebar follows `term-theme`, live. The plugin can't read the Zellij theme, so it draws with the terminal's palette: slot 3 (accent) fills the active tab like Zellij's own tab bar, slot 8 (dim) colors the tab numbers. Every Ghostty theme here sets those two slots to its Zellij twin's colors.
 
 The sidebar is the `v0.1.0` release of [cfal/zellij-vertical-tabs](https://github.com/cfal/zellij-vertical-tabs) (MIT), committed as `zellij/plugins/zellij-vertical-tabs.wasm`. To upgrade, replace that file with a newer release and commit.
 
@@ -93,17 +93,18 @@ Watch out for Zellij's built-in configuration screen (`Ctrl+O`, then `C`): if it
 | `venetian` | light | rich: ivory, burgundy, Medici green, ochre |
 | `library` | light | muted: linen, sepia, brass, bottle green, oxblood |
 | `stone` | light | muted, cool: limestone, slate, pewter, muted gold |
+| `gold-light` | light | muted, soft: warm-gray ground (dimmer than the others), dark gray text, muted gold; day pair of `gold-dim` |
 | `manuscript-dark` | dark | rich: oak-ink ground, vellum text, gold leaf, vermilion, lapis |
 | `venetian-dark` | dark | rich: wine-black, ivory, crimson, Medici green, ochre |
 | `library-dark` | dark | muted: dark leather, parchment text, brass, bottle green |
 | `stone-dark` | dark | muted, cool: slate, pewter text, muted gold, slate blue |
-| `gold-dim` | dark | Ghostty's built-in `Adventure` + Zellij `gold-dim`: black, gray text, muted gold |
+| `gold-dim` | dark | black, gray text, muted gold; the Ghostty side is the built-in `Adventure` with slots 3 and 8 retuned to gold-dim |
 
 All are built for readability: body text has about 11-14:1 contrast against the background, and the normal ANSI colors 1-6 (used by `ls`, git, prompts) about 4.5:1 or better. In Zellij the focused pane frame and the active tab use the theme's main accent; unfocused frames fade toward the background.
 
 ### Add a theme
 
-1. Add the Ghostty theme as `ghostty/themes/royal-<name>`.
+1. Add the Ghostty theme as `ghostty/themes/royal-<name>`. Set palette slot 3 to the Zellij theme's main accent and slot 8 to a dim gray: the `vtabs` sidebar draws with them.
 2. Add the Zellij theme as `zellij/themes/royal-<name>.kdl`. Copy an existing one as a template: the theme block must be named `royal-<name>` and stay indented by 4 spaces, because `term-theme` finds and renames it by that line.
 3. Append `<name>` to `LIGHT` or `DARK` at the top of `term-theme`.
 4. Run `./install.sh terminal` to link the new files, then `term-theme <name>`.
