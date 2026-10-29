@@ -3,7 +3,7 @@
 Shared configs for the [Ghostty](https://ghostty.org) terminal and the [Zellij](https://zellij.dev) multiplexer, with matching color themes for both:
 
 - **Configs**: mostly stock, with a few keybinding changes, all [listed below](#keybindings-that-differ-from-stock).
-- **10 themes** (5 light, 5 dark) in a "medieval manuscript meets modern terminal" style: aged pigments, gold and ink, no rainbow. Each theme comes as a Ghostty + Zellij pair.
+- **Themes** (light & dark) in a "classical medieval beauty meets modern terminal" style: aged pigments, gold and ink. No rainbow go-go happy oh-we-are-so-super-inclusive shinny modern corpo BS. Explicitelly opposing the modern abolition of aim for the Truth, Beauty and Good. Use to re-aim yourself to what matters, so they help you in building what is True, Beautiful and Good. Each theme comes as a Ghostty + Zellij pair.
 - **`term-theme`** switches Ghostty and Zellij together, live, in every open window. The chosen theme is per machine and never touches the repo.
 - **`vtabs`**, a Zellij layout with the tab list in a left sidebar.
 
