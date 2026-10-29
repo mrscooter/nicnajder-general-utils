@@ -75,6 +75,10 @@ The article above is the consensus of Nitra dialect experts and wins on any conf
 - A worker is "roboš"; the more refined word is "pracovník".
 - The one who paints is "malár" (maliar).
 
+### Loanwords
+
+- English (IT) loanwords are written as heard and take the past-tense endings: "pušov" (pushol), "komitov" (komitol). A Slovak word works too: "natlačeu" (natlačil).
+
 ### More examples of the rules above
 
 - "klunne" (kľudne): "dn" -> "nn" together with "ľ" -> "l".
