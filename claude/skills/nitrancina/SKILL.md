@@ -71,7 +71,7 @@ The article above is the consensus of Nitra dialect experts and wins on any conf
 ### Vocabulary
 
 - The verb "sú" (are) is "sa", short, without the length mark, as in rule a's "Sa tu šecci?": "obidva imidže sa hotové".
-- "Both" is "obidva".
+- "Both" follows the gender: "obidvaja chlapi" (masculine, people), "obidva stroje", "obidva duby" (masculine, things), "obidve ženy", "ulice", "dlane", "kosti" (feminine), "obidve mestá", "srccá", "vysvečeňá", "dívčence" (neuter). So "obidve požádavky".
 - A worker is "roboš"; the more refined word is "pracovník".
 - The one who paints is "malár" (maliar).
 
@@ -82,5 +82,6 @@ The article above is the consensus of Nitra dialect experts and wins on any conf
 ### More examples of the rules above
 
 - "klunne" (kľudne): "dn" -> "nn" together with "ľ" -> "l".
+- No diphthongs, in every word: "požádavka" (požiadavka), "bocán" (bocian), "žeráv" (žeriav).
 
 
