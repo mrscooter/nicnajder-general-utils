@@ -55,4 +55,26 @@ srcco /srdce/ - vaččina Nitrančanov má dobré srcco, aj keď sa aj výnimky,
 Ňékedy sa nitránčine stane, že porovnaní se slovenčinú sa slovách z ničoho ništ strácajú hlásky, čo dokumentujú slová jak eletrika, alebo mrzlina, atď.
 * Ďalšé anomálie prébežne dopĺňame.
 
+## Corrections from the user
+
+The article above is the consensus of Nitra dialect experts and wins on any conflict. These additions, confirmed by the user while teaching, fill in what it leaves open. Add new ones here as the user teaches you. Record only positive rules (what is correct), never lists of wrong forms.
+
+### "o" -> "u" around "-ovať" (rule g)
+
+- Verbs in every form: "maluvať", "pracuvať", "pracuvau" (pracoval), "ďakuvať", "stanuvať" (camp in a tent). Where "ov" belongs to the root, it stays: "kovať" (root "kov").
+- Verbal nouns and participles: "testuvaní" (testovanie), "spracuvaní" (spracovanie), "maluvání" (maľovanie), "testuvaný", "kvalifikuvaný".
+- Adjectives in "-ovací" and "-ovný": "testuvací", "programuvací", "pracuvný", "spisuvný".
+- Adjectives in "-ový" keep the "o": "dotazníkový".
+- Other nouns are irregular and go by feel for the language: "prevádzkuvatel" (prevádzkovateľ), "plánuvač", "maluvanka", "omaluvanka" change; "parkovisko", "pracovňa", "pracovník" keep the "o".
+- The change can also reach an "ov" outside "-ovať": "stanuviť" (stanoviť) and "stanuvisko" (stanovisko) are fine too.
+
+### Vocabulary
+
+- A worker is "roboš"; the more refined word is "pracovník".
+- The one who paints is "malár" (maliar).
+
+### More examples of the rules above
+
+- "klunne" (kľudne): "dn" -> "nn" together with "ľ" -> "l".
+
 
