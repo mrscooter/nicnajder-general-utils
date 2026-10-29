@@ -7,7 +7,7 @@ ALL=(claude terminal)
 
 usage() {
     cat <<EOF
-Usage: $0 [--check] [component...]
+Usage: $0 [--check] [--yes] [component...]
 
 Install the shared configs from this checkout by symlinking them into place. Without a component,
 installs all of them. Idempotent: re-run after a git pull that adds files (edits to existing files
@@ -20,6 +20,8 @@ Components:
 
 Options:
   --check     report what differs from the repo, change nothing; may come anywhere
+  -y, --yes   answer YES to every confirmation (e.g. replacing ~/.claude/CLAUDE.md), for runs
+              without anyone at the terminal; what is replaced still goes to the backups
   -h, --help  show this help; each component has its own: <component>/install.sh --help
 
 Anything in the way of a link is moved to backups/<date>_<time>/ in this checkout (one directory
@@ -31,11 +33,13 @@ EOF
 
 # No array for the components: an empty one trips set -u in bash < 4.4 (macOS).
 check=
+yes=
 for a; do
     shift
     case $a in
         -h|--help) usage; exit 0 ;;
         --check) check=--check ;;
+        -y|--yes) yes=--yes ;;
         *) set -- "$@" "$a" ;;
     esac
 done
@@ -51,6 +55,6 @@ export INSTALL_STAMP
 status=0
 for c; do
     echo "$c:"
-    "$ROOT/$c/install.sh" $check || status=1
+    "$ROOT/$c/install.sh" $check $yes || status=1
 done
 exit $status
