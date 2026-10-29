@@ -70,6 +70,8 @@ The article above is the consensus of Nitra dialect experts and wins on any conf
 
 ### Vocabulary
 
+- The verb "sú" (are) is "sa", short, without the length mark, as in rule a's "Sa tu šecci?": "obidva imidže sa hotové".
+- "Both" is "obidva".
 - A worker is "roboš"; the more refined word is "pracovník".
 - The one who paints is "malár" (maliar).
 
