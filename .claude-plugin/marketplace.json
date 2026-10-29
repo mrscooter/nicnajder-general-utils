@@ -1,0 +1,8 @@
+{
+  "name": "nicnajder-general-utils",
+  "description": "The ncn plugin from Ničnajder General Utils, installed in place by ./install.sh claude",
+  "owner": { "name": "mrscooter" },
+  "plugins": [
+    { "name": "ncn", "source": "./claude" }
+  ]
+}

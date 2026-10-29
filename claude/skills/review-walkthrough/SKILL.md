@@ -1,6 +1,6 @@
 ---
 name: review-walkthrough
-description: Guide a code-review findings list through a one-at-a-time triage discussion, then implement the agreed outcome. For each finding present Summary, Technical detail, Severity, Type, and a Proposed fix, then STOP and gather the user's accept/reject/defer/won't-fix/discuss decision before moving to the next; after every finding is resolved, show a decision log, get an explicit go-ahead, then implement (apply fixes, add regression tests, file issues for deferred items, verify). Use when the user invokes /review-walkthrough or asks to go through review findings step by step / one by one. Pairs with /code-review (which produces the findings); a process skill, not language-specific.
+description: Guide a code-review findings list through a one-at-a-time triage discussion, then implement the agreed outcome. For each finding present Summary, Technical detail, Severity, Type, and a Proposed fix, then STOP and gather the user's accept/reject/defer/won't-fix/discuss decision before moving to the next; after every finding is resolved, show a decision log, get an explicit go-ahead, then implement (apply fixes, add regression tests, file issues for deferred items, verify). Use when the user invokes /ncn:review-walkthrough or asks to go through review findings step by step / one by one. Pairs with /code-review (which produces the findings); a process skill, not language-specific.
 ---
 
 # review-walkthrough - triage review findings one at a time, then implement
@@ -17,8 +17,8 @@ This is a process skill: it is language- and repo-agnostic. It adapts to the pro
 
 ## Invocation grammar
 
-- "/review-walkthrough" - triage the findings already in context (most recent `/code-review`).
-- "/review-walkthrough <pasted list | path/to/findings.json>" - triage the supplied set.
+- "/ncn:review-walkthrough" - triage the findings already in context (most recent `/code-review`).
+- "/ncn:review-walkthrough <pasted list | path/to/findings.json>" - triage the supplied set.
 - "go through these one by one", "let's discuss the findings step by step" - same skill.
 
 ## Inputs - where the findings come from
