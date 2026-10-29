@@ -9,7 +9,7 @@ Usage: $0 [--check]
 
 Symlink the shared terminal configs from this checkout:
   ~/.config/ghostty/config.ghostty, ~/.config/ghostty/themes/*
-  ~/.config/zellij/config.kdl, ~/.config/zellij/themes/*
+  ~/.config/zellij/config.kdl, ~/.config/zellij/{themes,layouts,plugins}/*
   ~/.local/bin/term-theme   switches Ghostty and Zellij themes together; without an argument it
                             lists the themes
 On first install it activates the gold-dim theme. The chosen theme stays per machine, in untracked
@@ -27,14 +27,17 @@ EOF
 }
 # shellcheck source=../lib/link.sh
 source "$SRC/../lib/link.sh" "$@"
-outside "$HOME/.config/ghostty/themes" "$HOME/.config/zellij/themes" "$HOME/.local/bin"
+outside "$HOME/.config/ghostty/themes" "$HOME/.config/zellij/themes" "$HOME/.config/zellij/layouts" \
+    "$HOME/.config/zellij/plugins" "$HOME/.local/bin"
 
 link "$SRC/ghostty/config.ghostty" "$HOME/.config/ghostty/config.ghostty"
 link "$SRC/zellij/config.kdl" "$HOME/.config/zellij/config.kdl"
 for f in "$SRC"/ghostty/themes/*; do link "$f" "$HOME/.config/ghostty/themes/$(basename "$f")"; done
-for f in "$SRC"/zellij/themes/*; do link "$f" "$HOME/.config/zellij/themes/$(basename "$f")"; done
+for d in themes layouts plugins; do
+    for f in "$SRC/zellij/$d"/*; do link "$f" "$HOME/.config/zellij/$d/$(basename "$f")"; done
+done
 prune "$HOME/.config/ghostty/themes"
-prune "$HOME/.config/zellij/themes"
+for d in themes layouts plugins; do prune "$HOME/.config/zellij/$d"; done
 link "$SRC/term-theme" "$HOME/.local/bin/term-theme"
 
 # The shared Zellij config needs a local "active" theme to exist.
