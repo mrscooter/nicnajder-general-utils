@@ -18,6 +18,7 @@ untracked local files next to them, which the shared files pull in.
 ./install.sh                     # all components (claude, terminal)
 ./install.sh claude              # only some
 ./install.sh --check             # report what differs from the repo, change nothing; exit 1 if anything does
+./install.sh --yes claude        # no prompts (e.g. in a container entrypoint); replaced files still go to backups/
 ./install.sh --help              # what it does; each component too: claude/install.sh --help
 ```
 
@@ -25,9 +26,9 @@ Idempotent: re-run after a `git pull` that adds files (edits to existing files n
 Anything in the way of a link is never overwritten: it is moved to `backups/<date>_<time>/` in this
 checkout (gitignored, one directory per run) under its path relative to `~`, so
 `cp -a backups/<date>_<time>/. ~/` restores it. An existing `~/.claude/CLAUDE.md` is only replaced
-after a warning and typing `YES`. Links into the repo whose target was deleted or renamed are
-removed. Each component's `install.sh` also runs on its own; the shared helpers are in
-`lib/link.sh`.
+after a warning and typing `YES` (or with `--yes`). Links into the repo whose target was deleted
+or renamed are removed. Each component's `install.sh` also runs on its own; the shared helpers are
+in `lib/link.sh`.
 
 ## Contents
 
@@ -54,12 +55,13 @@ like this:
 | `~/.claude/GLOBAL-GENERAL-CLAUDE.md` | link to `GLOBAL-GENERAL-CLAUDE.md` |
 | `~/.claude/LOCAL-CLAUDE.md` | this machine's own rules: a plain untracked file, created if missing, never touched after |
 | `~/.claude/statusline-command.sh` | link to `statusline-command.sh` |
+| `statusLine` in `~/.claude/settings.json` | set to run `~/.claude/statusline-command.sh` |
 | plugin `ncn@nicnajder-general-utils` | `claude/` itself, loaded in place from the checkout: the skills and a session-start check |
 
-`settings.json` and `keybindings.json` stay per machine; install never edits them, only
-`claude plugin` adds its own two entries for the plugin. `~/.claude/skills` must be a real directory
-(or absent): install removes a link to `claude/skills` there, and moves a link anywhere else to the
-backups.
+`settings.json` and `keybindings.json` stay per machine; install sets only `statusLine` in
+`settings.json`, and `claude plugin` adds its own two entries for the plugin. `~/.claude/skills`
+must be a real directory (or absent): install removes a link to `claude/skills` there, and moves a
+link anywhere else to the backups.
 
 - `TOP-LEVEL-CLAUDE.md` - entry point, linked as `~/.claude/CLAUDE.md`: imports
   `GLOBAL-GENERAL-CLAUDE.md` and `~/.claude/LOCAL-CLAUDE.md`, whose rules win where they differ.

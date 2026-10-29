@@ -3,17 +3,20 @@
 # arguments:
 #   source "$SRC/../lib/link.sh" "$@"
 # -h/--help prints usage. A --check argument switches to report-only mode: nothing is changed, every
-# difference from the repo is printed, and finish exits 1 if there was any.
+# difference from the repo is printed, and finish exits 1 if there was any. -y/--yes answers YES to
+# every confirmation, for runs without anyone at the terminal.
 
 REPO=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)
 # Anything in the way goes to backups/<stamp>/ in this checkout (gitignored), under its path relative
 # to $HOME. ./install.sh passes one stamp to every component, so a run makes one directory.
 BACKUP=$REPO/backups/${INSTALL_STAMP:-$(date +%Y-%m-%d_%H-%M-%S)}
 CHECK=0
+YES=0
 for a; do
     case $a in
         -h|--help) usage; exit 0 ;;
         --check) CHECK=1 ;;
+        -y|--yes) YES=1 ;;
         *) echo "unknown argument: $a (see --help)" >&2; exit 2 ;;
     esac
 done
@@ -77,6 +80,7 @@ link() {
 
 confirmed() {
     local to=$1 from=$2 what answer=
+    (( ! YES )) || return 0
     if [[ -L $to ]]; then what="a link to $(readlink "$to")"
     elif [[ -d $to ]]; then what="a directory"
     else what="a regular file"; fi
