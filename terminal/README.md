@@ -58,6 +58,7 @@ Zellij:
 |---|---|---|
 | `Ctrl+Q` | nothing (goes to the program in the pane); quit with `Ctrl+O`, then `Q` | quit Zellij |
 | `Alt+S` | make the `vtabs` sidebar focusable | unbound |
+| `Alt+K` / `Alt+J` | next / previous tab (pane focus up/down stays on `Alt+Down` / `Alt+Up`) | move focus down / up |
 
 Everything else is stock. Zellij's startup tips are also turned off.
 
