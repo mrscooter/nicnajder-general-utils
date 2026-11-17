@@ -74,7 +74,7 @@ Type the command in Claude Code, optionally followed by the task, e.g. `/ncn:tas
 |---|---|
 | `/ncn:task-journal` | long, multi-session tasks (bug hunts, migrations, audits): keeps a journal on disk (brief, findings, status, progress log) that survives context compaction and new sessions |
 | `/ncn:review-walkthrough` | going through code-review findings one at a time (accept / reject / defer / won't fix), then implementing what was agreed; pairs with `/code-review` |
-| `/ncn:3designs` | a UI change as N variants you switch between live in the running web app; after you pick one, the rest is removed without a trace |
+| `/ncn:3approaches` | a matter-of-taste decision in a web app (design, layout, copy, motion, a flow) as N variants you switch between live in the running app, on one or more independent axes; after you pick, the rest is removed without a trace. Has a handoff mode: an unattended agent builds all variants and writes a manifest, a later session finalizes |
 | `/ncn:step-by-step` | being walked through a how-to one step per message, Claude waits for you in between |
 | `/ncn:nitrancina` | Claude speaks nitránčina, the Slovak dialect of Nitra |
 

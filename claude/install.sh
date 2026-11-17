@@ -17,7 +17,7 @@ Set up the shared Claude Code config from this checkout in ~/.claude:
   statusline-command.sh     link to claude/statusline-command.sh
   settings.json             statusLine set to run it; the only key set here, the rest stays as is
   plugin ncn@nicnajder-general-utils
-                            claude/ itself, loaded in place: the skills (/ncn:3designs, ...) and a
+                            claude/ itself, loaded in place: the skills (/ncn:3approaches, ...) and a
                             session-start check that runs this script with --check and warns if
                             anything is off
 Also removes links in ~/.claude/skills that point into this checkout (old skill links). When
