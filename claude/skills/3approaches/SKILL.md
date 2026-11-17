@@ -42,7 +42,7 @@ With several experiments live, iteration and finalization requests name the one 
 
 ## Copy variants
 
-- Variant texts live in the experiment's variant table, never in the project's translation files, and only in the project's primary language. The Original variant keeps reading the existing texts from where they are, so tests and other languages see what they saw before.
+- Variant texts live with the experiment's code, never in the project's translation files, and only in the project's primary language. The Original variant keeps reading the existing texts from where they are, so tests and other languages see what they saw before.
 - At finalization the winning text moves into the project's translation mechanism, in every language the project ships.
 - This holds for every text the experiment introduces, including new texts inside a design variant (the labels of a new section).
 
@@ -63,35 +63,35 @@ This skill prescribes no mechanism. Find in the project how its stack tells a de
 - The default variant (Original on changes, A on new things) is what tests, release builds and automation see. The existing test suite stays green for the whole life of the experiment, untouched.
 - Switching takes effect in the running app, without a rebuild.
 - The choice persists over a restart or reload, in local per-machine storage that is never committed, read and written defensively. The experiment's code works when that storage is missing and when no switcher is on screen: components rendered bare in a unit test must not break.
-- The persisted choice is validated against the current variant table; anything stale or unknown falls back to the default. This is what makes iteration rounds safe.
+- The persisted choice is validated against the current set of variants; anything stale or unknown falls back to the default. This is what makes iteration rounds safe.
 - Automation can select a variant without the switcher, by setting the persisted choice before the app starts.
 - The switcher works wherever its subject is rendered, under every state of the app, including inside the variants of another live experiment.
 - The switcher is visibly a dev tool and changes nothing it does not control: an inline switcher takes no space in the layout (every real element is exactly where it is without it), and no switcher covers the switcher of another live experiment.
-- Technique choice (internal, never user-facing): variants that differ only in styling or text swap values on identical structure (one table keyed by variant letter); variants that differ in structure swap blocks/subcomponents. Pick the cheapest technique that expresses the variants - their cleanup steps differ, so do not pay for structure-swapping where a table suffices.
-- The auxiliary code (variant table, persistence, switcher, variant subcomponents) gets NO tests - it is throwaway by design. A project rule of "new code needs tests" does not apply to it; state that explicitly in the run if the project has such a rule.
-- All auxiliary code is isolated for mechanical removal (see next section).
+- Technique choice (internal, never user-facing): pick the cheapest technique that expresses the variants. Variants that differ only in styling or text swap names or values on identical structure; only variants that differ in structure swap blocks or components. Their cleanup steps differ, so do not pay for structure-swapping where a name or a value suffices.
+- The auxiliary code (the switching, the persistence, the switcher, the variants themselves) gets NO tests - it is throwaway by design. A project rule of "new code needs tests" does not apply to it; state that explicitly in the run if the project has such a rule.
+- Everything the experiment adds is traceable for mechanical removal (see next section).
 
-## Isolation and several experiments side by side
+## Implementation form and traceability
 
-- Every experiment has an id: a short slug of the decision (`hero-copy`, `dashboard-layout`), unique among the experiments live in the repository. Grep `AUXILIARY` first to see which ones are.
-- Everything the experiment adds is named by that id: one dedicated dev folder or module, the persistence key, the switcher.
-- Touch points in real code are minimal, and each file touched outside the dev folder carries one comment `AUXILIARY(<id>)` naming the task and pointing at the dev folder.
-- Experiments share nothing: no common store, no common switcher component. Finalizing one leaves the others working.
-- The repository alone (its files and its diff against the commit the experiment started from) must be enough to find and remove one experiment.
+- How the variants are written is decided per task, by what is varied and by how the codebase is written: variant-suffixed names in the existing files (`btn-A`, `btn-B`, `btn-C`), entries in an existing stylesheet or table, a small table of texts, separate blocks or components where the structure differs. Use the lightest form that expresses the variants; do not create files or folders the variants do not need.
+- Whatever the form, the experiment must be removable by someone who has never seen it. Before building, fix its trace: the search pattern(s) that find everything the experiment adds and nothing else (a naming scheme, a marker, a path). Then keep to it.
+- The trace is unique to this experiment. Grep `AUXILIARY` to see which experiments are already live, and choose names that cannot be confused with theirs or with ordinary code: a bare `-A` suffix is fine for one experiment in a stylesheet, not when a second experiment uses letters there too.
+- One anchor comment, `AUXILIARY(<id>)`, where the switcher is mounted: the decision and the trace pattern(s). `<id>` is a short slug of the decision (`hero-copy`, `dashboard-layout`). It is the entry point for finalization.
+- Experiments do not depend on each other's code: finalizing one leaves the others working.
 
 ## Iteration
 
 On "keep A, add K more":
 
 - Kept variants keep their letters and descriptors.
-- Losing variants' table entries (and subcomponents, if structural) are deleted.
+- Losing variants are deleted, in whatever form they were written.
 - New variants take the freed letters, with fresh theses and descriptors.
 - Original (when present) always survives iteration and stays the default.
 - A persisted letter that no longer exists falls back to the default via the validation invariant - verify this after the round. A persisted letter that was reused shows the new variant.
 
 ## Finalization
 
-Works from the repository (and the manifest, when there is one), never from conversation memory. Start by reading the experiment's dev folder, grepping `AUXILIARY(<id>)`, and diffing the touched files against the commit the experiment started from: the comment names the file, the diff shows the lines.
+Works from the repository (and the manifest, when there is one), never from conversation memory. Start at the anchor comment (`AUXILIARY(<id>)`), run its trace pattern(s), and diff the touched files against the commit the experiment started from.
 
 The pick:
 
@@ -99,10 +99,10 @@ The pick:
 
 Steps:
 
-1. Promote the winner into the real code: inline its values, promote its structure into the real component, move its text into the translation mechanism in every shipped language (translate from the primary language). A text that replaces an existing one overwrites that entry; a new text gets a new entry named by the project's convention.
-2. If the pick is Original: put back whatever the experiment took out of the real code (original values that moved into the variant table, the original text lookup). Where the original was never touched, deleting the experiment is the whole step.
-3. Delete the dev folder and every `AUXILIARY(<id>)` touch point. Other live experiments stay as they are, also where this experiment's code sat inside their variants or theirs inside this one's.
-4. Leftover grep MUST return empty. What must be gone is everything this experiment added, so run it over the lines added since the starting commit (the diff, filtered to added lines) and over the source tree for the names unique to it. The names: `AUXILIARY(<id>)`, the dev folder path, every name the dev folder defined or exported, the persistence key, and "variant"/"approach" naming the experiment introduced. Ordinary words, other live experiments and records of earlier runs are judged in the diff form only.
+1. Promote the winner into the real code under its final, variant-free names (`btn-B` becomes `btn`): inline its values, promote its structure into the real component, move its text into the translation mechanism in every shipped language (translate from the primary language). A text that replaces an existing one overwrites that entry; a new text gets a new entry named by the project's convention.
+2. If the pick is Original: put back whatever the experiment took out of the real code (original values or names that became a variant, the original text lookup). Where the original was never touched, deleting the experiment is the whole step.
+3. Delete everything else the trace finds: the losing variants, the switching, the persistence, the switcher, the anchor comment. Other live experiments stay as they are, also where this experiment's code sat inside their variants or theirs inside this one's.
+4. Leftover grep MUST return empty: the trace pattern(s), `AUXILIARY(<id>)` and the persistence key over the source tree. Then read the lines added since the starting commit (the diff, filtered to added lines) for what slipped outside the trace: variant letters in names, "variant"/"approach" naming the experiment introduced. Ordinary words, other live experiments and records of earlier runs do not count.
 5. From here on the code is ordinary project code and the project's rules apply to it again: update every test that asserts what the winner replaced (search the whole test tree for the surface, not only its own test file), add the tests the project requires for new behavior.
 6. The project's lint, tests and build, plus a look at the final state in the running app, in every shipped language. Where the variants state is still reachable (the variants commit, a stash), compare the final state with the picked variant selected through the persisted choice: it must be what the user judged.
 7. Commit.
@@ -114,9 +114,9 @@ For a run with no user present; the caller says so and names the manifest path. 
 
 - Never ask. Where the interactive protocol stops to ask (fewer than N distinct theses, an invariant the stack cannot satisfy), decide, and record the decision in the manifest.
 - Build every variant, leave the switcher in, stop before finalization.
-- Write the manifest at the path the caller names, from `templates/manifest.md` in this skill's directory: the experiment id, placement of the switcher, persistence key, default, per variant the letter, descriptor, thesis, what to look at and the weakness its author sees in it; how to run the app and switch; how automation selects a variant; what finalization will have to touch; the exact finalization request to make.
+- Write the manifest at the path the caller names, from `templates/manifest.md` in this skill's directory: the experiment id, where the variants live and their trace, placement of the switcher, persistence key, default, per variant the letter, descriptor, thesis, what to look at and the weakness its author sees in it; how to run the app and switch; how automation selects a variant; what finalization will have to touch; the exact finalization request to make.
 - Commit the variants, on a non-default branch only, in a commit whose message says the state is not final (e.g. "feat: <summary> (variants, not final)"). That commit stays in the branch history after finalization; squash-merge the branch if the history has to be free of the experiment too.
-- Finalization must be possible for a session that has never seen the run: everything it needs is in the repository (the dev folder, the AUXILIARY comments, the variants commit) and the manifest.
+- Finalization must be possible for a session that has never seen the run: everything it needs is in the repository (the anchor comment, the trace, the variants commit) and the manifest.
 
 ## Decisions outside a running app
 

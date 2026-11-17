@@ -4,7 +4,8 @@
 
 - Experiment id: `<id>`. Driving issue/task: <issue or one line>.
 - State: all variants built, NOT final. Branch `<branch>`, variants commit `<sha>`, started from `<base sha>`.
-- Dev folder: `<path>` (all auxiliary code). Touch points outside it carry an `AUXILIARY(<id>)` comment: `<file>`, `<file>`.
+- Where the variants live: `<file or path>`, `<file or path>`. Anchor comment `AUXILIARY(<id>)` in `<file>`.
+- Trace, finds everything the experiment added and nothing else: `<search pattern(s)>`.
 - Switcher: <floating panel, where | inline, next to which element>.
 - Persisted choice: `<key and where it is stored>`. Default: `<letter>`.
 - Other experiments live in this repository: <ids, and whether this one's subject is rendered inside their variants | none>.
@@ -42,7 +43,7 @@ A mix is given in free text ("layout of B with the color of A").
 
 What finalization will have to touch:
 
-- Leftover grep, must print nothing: `<the diff since <base sha>, added lines only, filtered for every name this experiment introduced>`
+- Leftover grep, must print nothing: the trace above, `AUXILIARY(<id>)` and the persistence key over the source tree; then read the lines added since `<base sha>`.
 - Tests that assert the changed surface: `<file>`, `<file>` (found by searching the whole test tree).
 - Texts: <where the winning texts go, the shipped languages, how to see each language in the running app>.
 - <anything else the project's rules require of the final code>.
