@@ -38,7 +38,7 @@ With several experiments live, iteration and finalization requests name the one 
 - Copy variants differ in the argument they make (what they lead with, which objection they answer), not in wording alone.
 - If the decision only supports K < N genuinely distinct theses, STOP and ask the user: pad to N with near-duplicates anyway, or go with K. Never silently pad, never silently reduce. (Handoff mode decides instead of asking, see there.)
 - A change to something that already exists: auto-include an "Original" variant (the untouched current state, key `O`) on top of the N asked-for variants; Original is the default. Something new: no Original; variant A is the default.
-- This skill is the comparison protocol, not the craft. For a visual decision load a design skill, for a copy decision a copywriting skill, when the session offers one.
+- This skill is the comparison protocol, not the craft. It serves any creative work whose result is judged by taste: visual design and copywriting are two examples, not the limit (motion, iconography, tone of voice, the shape of an interaction are others). Whatever the craft, load the skill for it when the session offers one: a design skill for a visual decision, a copywriting skill for copy, and so on.
 
 ## Copy variants
 
@@ -66,7 +66,7 @@ This skill prescribes no mechanism. Find in the project how its stack tells a de
 - The persisted choice is validated against the current set of variants; anything stale or unknown falls back to the default. This is what makes iteration rounds safe.
 - Automation can select a variant without the switcher, by setting the persisted choice before the app starts.
 - The switcher works wherever its subject is rendered, under every state of the app, including inside the variants of another live experiment.
-- The switcher is visibly a dev tool and changes nothing it does not control: an inline switcher takes no space in the layout (every real element is exactly where it is without it), and no switcher covers the switcher of another live experiment.
+- The switcher is visibly a dev tool and disturbs what it does not control as little as it reasonably can. An inline switcher ideally takes no space in the layout; where that is impractical, a small shift is acceptable (an element a little higher or wider), as long as it is the same under every variant, so the comparison stays fair. Mention such a shift when you hand the variants over (handoff mode: in the manifest). No switcher covers the switcher of another live experiment.
 - Technique choice (internal, never user-facing): pick the cheapest technique that expresses the variants. Variants that differ only in styling or text swap names or values on identical structure; only variants that differ in structure swap blocks or components. Their cleanup steps differ, so do not pay for structure-swapping where a name or a value suffices.
 - The auxiliary code (the switching, the persistence, the switcher, the variants themselves) gets NO tests - it is throwaway by design. A project rule of "new code needs tests" does not apply to it; state that explicitly in the run if the project has such a rule.
 - Everything the experiment adds is traceable for mechanical removal (see next section).
